@@ -51,7 +51,7 @@ userChromeJS.downloadPlus.showAllDrives 下载对话框显示所有驱动器
 // @include         chrome://browser/content/downloads/contentAreaDownloadsView.xhtml
 // @include         chrome://browser/content/downloads/contentAreaDownloadsView.xhtml?SM
 // @include         about:downloads
-// @version         1.0.5-sine.2
+// @version         1.0.5-sine.5
 // @compatibility   Firefox 139
 // @icon            data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABd0lEQVQ4T5WTv0/CQBzFXy22Axh+NHXqYJjAYggd2JTYNrK5OTg5GTf/Dv0jHEjUzdnEUHbD1KQaEwYTnAwlhiiIxub0jvCjFCjeeN/3Pn33eschZFWrVZJOpxGPxyFJEjctD2xMCqjZMIzRluu6kGXZ5wkAqIk6kskkNE3zfZAC6JqE+ADUXCqVwPM8E3JcMCAhBO12ewQZKai5UCgglUotbGUIGCZhgOmzhhXreR4sy0K5XB5kpABd18N8vnmtVoNpmmNAPp//F8C27TGgXq+z5judzlKQSCQCVVVZkb6aHxyHCKKIt/MDH+jn2cF334N7coGsVmQzNZdj3sB/sg6zRFeaTETWFHitBj5egNezR2QymfCb2DJBEtkV8OuDEA2bYOOqD1EUZ97awGav1yPvR1HIO38Jvjh8OgTN03tsasXlALdGjOzud7EaA+6uo9iqPEFRlLlvJjCggL3jLtwbIHE5P/qw5Zkl0uF2xYYgCAtfK9X9AmZ+hRG+dHY+AAAAAElFTkSuQmCC
 // @homepageURL     https://github.com/benzBrake/FirefoxCustomize
@@ -464,10 +464,15 @@ userChromeJS.downloadPlus.showAllDrives 下载对话框显示所有驱动器
         },
         get ARIA2_PATH () {
             delete this.ARIA2_PATH;
-            const aria2Pref = this.getResolvedAria2Path();
-            const aria2File = Cc['@mozilla.org/file/local;1'].createInstance(Ci.nsIFile);
-            aria2File.initWithPath(aria2Pref);
-            return this.ARIA2_PATH = aria2File.exists() ? aria2File.path : false;
+            try {
+                const aria2Pref = this.getResolvedAria2Path();
+                const aria2File = Cc['@mozilla.org/file/local;1'].createInstance(Ci.nsIFile);
+                aria2File.initWithPath(aria2Pref);
+                return this.ARIA2_PATH = aria2File.exists() ? aria2File.path : false;
+            } catch (ex) {
+                this._log("读取 aria2Path 失败，已回退为禁用状态", ex);
+                return this.ARIA2_PATH = false;
+            }
         },
         get DEFAULT_MANAGER () {
             return Services.prefs.getStringPref(this.PREF_DEFAULT_MANAGER, '');
@@ -497,7 +502,7 @@ userChromeJS.downloadPlus.showAllDrives 下载对话框显示所有驱动器
             // 保存按钮无需等待即可点击
             Services.prefs.setIntPref('security.dialog_enable_delay', this.SECURITY_DIALOG_DELAY);
 
-            this.registerToolbarButton();
+            this.scheduleToolbarButtonRegistration();
 
             let sb = window.userChrome_js?.sb;
             if (!sb) {
@@ -598,6 +603,11 @@ userChromeJS.downloadPlus.showAllDrives 下载对话框显示所有驱动器
                 return globalThis.CustomizableUI;
             }
             try {
+                return ChromeUtils.importESModule("moz-src:///browser/components/customizableui/CustomizableUI.sys.mjs").CustomizableUI;
+            } catch (ex) {
+                this._log("导入 moz-src CustomizableUI.sys.mjs 失败", ex);
+            }
+            try {
                 return ChromeUtils.importESModule("resource:///modules/CustomizableUI.sys.mjs").CustomizableUI;
             } catch (ex) {
                 this._log("导入 CustomizableUI.sys.mjs 失败", ex);
@@ -609,6 +619,104 @@ userChromeJS.downloadPlus.showAllDrives 下载对话框显示所有驱动器
             }
             return null;
         },
+        scheduleToolbarButtonRegistration () {
+            if (this._toolbarButtonRegistrationScheduled) {
+                return;
+            }
+            this._toolbarButtonRegistrationScheduled = true;
+
+            const startRegistration = () => {
+                this._toolbarButtonRegistrationScheduled = false;
+                this.ensureToolbarButtonRegistered();
+            };
+
+            if (globalThis.gBrowserInit?.delayedStartupFinished) {
+                startRegistration();
+                return;
+            }
+
+            const delayedListener = (subject, topic) => {
+                if (topic === "browser-delayed-startup-finished" && subject === window) {
+                    Services.obs.removeObserver(delayedListener, topic);
+                    if (this._toolbarButtonDelayedListener === delayedListener) {
+                        this._toolbarButtonDelayedListener = null;
+                    }
+                    startRegistration();
+                }
+            };
+
+            this._toolbarButtonDelayedListener = delayedListener;
+            Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
+        },
+        ensureToolbarButtonRegistered (attempt = 0) {
+            if (this.registerToolbarButton()) {
+                return true;
+            }
+            if (attempt >= 19) {
+                console.warn("[DownloadPlus] Toolbar button registration exhausted retries.");
+                return false;
+            }
+            const delay = attempt < 4 ? 250 : 1000;
+            setTimeout(() => {
+                this.ensureToolbarButtonRegistered(attempt + 1);
+            }, delay);
+            return false;
+        },
+        ensureToolbarButtonPlaced (customizableUI) {
+            if (!customizableUI) {
+                return false;
+            }
+            try {
+                const placement = customizableUI.getPlacementOfWidget?.('DownloadPlus-Btn', true);
+                if (placement) {
+                    return true;
+                }
+                customizableUI.addWidgetToArea?.('DownloadPlus-Btn', customizableUI.AREA_NAVBAR);
+                const updatedPlacement = customizableUI.getPlacementOfWidget?.('DownloadPlus-Btn', true);
+                if (updatedPlacement) {
+                    return true;
+                }
+            } catch (ex) {
+                console.warn("[DownloadPlus] Failed to place toolbar button via CustomizableUI:", ex);
+            }
+            return this.ensureToolbarButtonInCustomizationState(customizableUI.AREA_NAVBAR);
+        },
+        ensureToolbarButtonInCustomizationState (targetArea = 'nav-bar') {
+            const prefName = "browser.uiCustomization.state";
+            try {
+                const raw = Services.prefs.getStringPref(prefName, "");
+                if (!raw) {
+                    return false;
+                }
+                const state = JSON.parse(raw);
+                const placements = state.placements || (state.placements = {});
+                const navBar = placements[targetArea] || (placements[targetArea] = []);
+                if (!navBar.includes("DownloadPlus-Btn")) {
+                    const anchorIds = ["zen-colorscheme-toggle", "reopen-closed-tabs-button", "unified-extensions-button"];
+                    let inserted = false;
+                    for (const anchorId of anchorIds) {
+                        const index = navBar.indexOf(anchorId);
+                        if (index !== -1) {
+                            navBar.splice(index + 1, 0, "DownloadPlus-Btn");
+                            inserted = true;
+                            break;
+                        }
+                    }
+                    if (!inserted) {
+                        navBar.push("DownloadPlus-Btn");
+                    }
+                }
+                const seen = state.seen || (state.seen = []);
+                if (!seen.includes("DownloadPlus-Btn")) {
+                    seen.push("DownloadPlus-Btn");
+                }
+                Services.prefs.setStringPref(prefName, JSON.stringify(state));
+                return true;
+            } catch (ex) {
+                console.warn("[DownloadPlus] Failed to update browser.uiCustomization.state:", ex);
+                return false;
+            }
+        },
         registerToolbarButton () {
             const customizableUI = this.getCustomizableUI();
             if (!customizableUI) {
@@ -616,7 +724,7 @@ userChromeJS.downloadPlus.showAllDrives 下载对话框显示所有驱动器
                 return false;
             }
             if (customizableUI.getWidget?.('DownloadPlus-Btn')) {
-                return true;
+                return this.ensureToolbarButtonPlaced(customizableUI);
             }
             try {
                 customizableUI.createWidget({
@@ -627,20 +735,27 @@ userChromeJS.downloadPlus.showAllDrives 下载对话框显示所有驱动器
                     label: LANG.format('download plus btn'),
                     tooltiptext: LANG.format('download enhance click to switch default download manager'),
                     onCreated: btn => {
-                        btn.setAttribute('id', 'DownloadPlus-Btn');
-                        btn.setAttribute('type', 'menu');
-                        btn.classList.add('toolbarbutton-1', 'chromeclass-toolbar-additional', 'FlashGot-icon');
-                        let popup = btn.querySelector('#DownloadPlus-Btn-Popup');
-                        if (!popup) {
-                            popup = this.populateMenu(btn.ownerDocument, {
-                                id: 'DownloadPlus-Btn-Popup',
-                            });
-                            btn.appendChild(popup);
+                        try {
+                            btn.setAttribute('id', 'DownloadPlus-Btn');
+                            btn.setAttribute('type', 'menu');
+                            btn.classList.add('toolbarbutton-1', 'chromeclass-toolbar-additional', 'FlashGot-icon');
+                            let popup = btn.querySelector('#DownloadPlus-Btn-Popup');
+                            if (!popup) {
+                                popup = this.populateMenu(btn.ownerDocument, {
+                                    id: 'DownloadPlus-Btn-Popup',
+                                });
+                                if (popup) {
+                                    btn.appendChild(popup);
+                                }
+                            }
+                            btn.addEventListener('mouseover', this, false);
+                        } catch (ex) {
+                            console.warn("[DownloadPlus] Failed to finish toolbar button setup:", ex);
                         }
-                        btn.addEventListener('mouseover', this, false);
+                        return btn;
                     }
                 });
-                return true;
+                return this.ensureToolbarButtonPlaced(customizableUI);
             } catch (ex) {
                 console.warn("[DownloadPlus] Failed to register toolbar button:", ex);
                 return false;
