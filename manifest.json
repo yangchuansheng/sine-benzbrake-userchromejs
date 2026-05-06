@@ -1588,5 +1588,21 @@
     ],
     "license": "CC BY-NC-SA 4.0",
     "assets": []
+  },
+  {
+    "id": "downloadplus_fx136",
+    "sourcePath": "benzBrake/Firefox-downloadPlus.uc.js/downloadPlus_Fx136.uc.js",
+    "name": "DownloadPlus Fx136",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/places/places.xhtml",
+      "chrome://mozapps/content/downloads/unknownContentType.xhtml",
+      "chrome://browser/content/downloads/contentAreaDownloadsView.xhtml",
+      "chrome://browser/content/downloads/contentAreaDownloadsView.xhtml?SM",
+      "about:downloads"
+    ],
+    "license": "MIT License",
+    "assets": []
   }
 ]

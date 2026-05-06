@@ -12,3 +12,8 @@ Additional source added on 2026-05-06:
 - https://github.com/aminomancer/uc.css.js/blob/master/JS/appMenuMods.uc.js
 - Source commit: f9ce4cc86435b767b6b6adb264fa3ba6d39c1027
 - License metadata: CC BY-NC-SA 4.0
+
+Additional source added on 2026-05-06:
+- https://github.com/benzBrake/Firefox-downloadPlus.uc.js/blob/main/downloadPlus_Fx136.uc.js
+- Source commit: 00eaca45ae38ca1f928c944f52ac7e9b5ca35d95
+- License metadata: MIT License

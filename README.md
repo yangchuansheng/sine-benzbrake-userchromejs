@@ -90,6 +90,7 @@ Use a path from the table below.
 | `yangchuansheng/sine-benzbrake-userchromejs/tree/main/mods/copycattheme__copycattheme` | `CopyCatTheme/CopyCatTheme.uc.js` | yes | MIT License |
 | `yangchuansheng/sine-benzbrake-userchromejs/tree/main/mods/copyplaintext` | `CopyPlainText.uc.js` | yes | not specified |
 | `yangchuansheng/sine-benzbrake-userchromejs/tree/main/mods/custombuttons` | `CustomButtons.uc.js` | yes | not specified |
+| `yangchuansheng/sine-benzbrake-userchromejs/tree/main/mods/downloadplus_fx136` | `benzBrake/Firefox-downloadPlus.uc.js/downloadPlus_Fx136.uc.js` | yes | MIT License |
 | `yangchuansheng/sine-benzbrake-userchromejs/tree/main/mods/extensionsoptionsmenu__extension-options-menu` | `ExtensionsOptionsMenu/Extension Options Menu.uc.js` | yes | not specified |
 | `yangchuansheng/sine-benzbrake-userchromejs/tree/main/mods/extensionsoptionsmenu__extensionoptionsmenu` | `ExtensionsOptionsMenu/extensionOptionsMenu.uc.js` | yes | not specified |
 | `yangchuansheng/sine-benzbrake-userchromejs/tree/main/mods/homeendfixer` | `HomeEndFixer.uc.js` | yes | MIT License |
