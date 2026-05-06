@@ -51,7 +51,7 @@ userChromeJS.downloadPlus.showAllDrives 下载对话框显示所有驱动器
 // @include         chrome://browser/content/downloads/contentAreaDownloadsView.xhtml
 // @include         chrome://browser/content/downloads/contentAreaDownloadsView.xhtml?SM
 // @include         about:downloads
-// @version         1.0.5-sine.1
+// @version         1.0.5-sine.2
 // @compatibility   Firefox 139
 // @icon            data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABd0lEQVQ4T5WTv0/CQBzFXy22Axh+NHXqYJjAYggd2JTYNrK5OTg5GTf/Dv0jHEjUzdnEUHbD1KQaEwYTnAwlhiiIxub0jvCjFCjeeN/3Pn33eschZFWrVZJOpxGPxyFJEjctD2xMCqjZMIzRluu6kGXZ5wkAqIk6kskkNE3zfZAC6JqE+ADUXCqVwPM8E3JcMCAhBO12ewQZKai5UCgglUotbGUIGCZhgOmzhhXreR4sy0K5XB5kpABd18N8vnmtVoNpmmNAPp//F8C27TGgXq+z5judzlKQSCQCVVVZkb6aHxyHCKKIt/MDH+jn2cF334N7coGsVmQzNZdj3sB/sg6zRFeaTETWFHitBj5egNezR2QymfCb2DJBEtkV8OuDEA2bYOOqD1EUZ97awGav1yPvR1HIO38Jvjh8OgTN03tsasXlALdGjOzud7EaA+6uo9iqPEFRlLlvJjCggL3jLtwbIHE5P/qw5Zkl0uF2xYYgCAtfK9X9AmZ+hRG+dHY+AAAAAElFTkSuQmCC
 // @homepageURL     https://github.com/benzBrake/FirefoxCustomize
@@ -623,20 +623,21 @@ userChromeJS.downloadPlus.showAllDrives 下载对话框显示所有驱动器
                     id: 'DownloadPlus-Btn',
                     removable: true,
                     defaultArea: customizableUI.AREA_NAVBAR,
-                    type: "custom",
-                    onBuild: doc => {
-                        const btn = createEl(doc, 'toolbarbutton', {
-                            id: 'DownloadPlus-Btn',
-                            label: LANG.format('download plus btn'),
-                            tooltiptext: LANG.format('download enhance click to switch default download manager'),
-                            type: 'menu',
-                            class: 'toolbarbutton-1 chromeclass-toolbar-additional FlashGot-icon',
-                        });
-                        btn.appendChild(this.populateMenu(doc, {
-                            id: 'DownloadPlus-Btn-Popup',
-                        }));
+                    type: "button",
+                    label: LANG.format('download plus btn'),
+                    tooltiptext: LANG.format('download enhance click to switch default download manager'),
+                    onCreated: btn => {
+                        btn.setAttribute('id', 'DownloadPlus-Btn');
+                        btn.setAttribute('type', 'menu');
+                        btn.classList.add('toolbarbutton-1', 'chromeclass-toolbar-additional', 'FlashGot-icon');
+                        let popup = btn.querySelector('#DownloadPlus-Btn-Popup');
+                        if (!popup) {
+                            popup = this.populateMenu(btn.ownerDocument, {
+                                id: 'DownloadPlus-Btn-Popup',
+                            });
+                            btn.appendChild(popup);
+                        }
                         btn.addEventListener('mouseover', this, false);
-                        return btn;
                     }
                 });
                 return true;
