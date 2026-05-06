@@ -1,0 +1,18 @@
+{
+  "id": "100__browsertoolbox",
+  "name": "browsertoolbox.uc.js",
+  "description": "添加一个快捷打开浏览器内容工具箱的按钮",
+  "version": "2025.01.31 Remove Cu.import, per Bug Bug 1881888, Bug 1937080 Block inline event handlers in Nightly and collect telemetry",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/100",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "browsertoolbox.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

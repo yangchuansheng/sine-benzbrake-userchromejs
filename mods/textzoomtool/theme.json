@@ -1,0 +1,18 @@
+{
+  "id": "textzoomtool",
+  "name": "textZoomTool",
+  "description": "给应用主菜单添加文本缩放工具条",
+  "version": "0.0.2",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "textZoomTool.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

@@ -1,0 +1,18 @@
+{
+  "id": "80__copycat__copycat",
+  "name": "CopyCat.uc.js",
+  "description": "CopyCat 资源管理",
+  "version": "0.3.4",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/80/CopyCat",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "CopyCat.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

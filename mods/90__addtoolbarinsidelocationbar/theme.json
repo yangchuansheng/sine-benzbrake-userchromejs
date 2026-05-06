@@ -1,0 +1,18 @@
+{
+  "id": "90__addtoolbarinsidelocationbar",
+  "name": "000-addToolbarInsideLocationBar.uc.js",
+  "description": "add a Toolbar inside LocationBar",
+  "version": "2022/07/06 22:30 Firefox 90+ 按钮不居中",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/90",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "addToolbarInsideLocationBar.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

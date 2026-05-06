@@ -1,0 +1,18 @@
+{
+  "id": "90__custombuttons",
+  "name": "CustomButtons.uc.js",
+  "description": "添加多个自定义按钮，截图、UndoCloseTab、证书管理器、放大缩小、清除历史记录、高级首选项、受同步的标签页、下载历史、管理书签",
+  "version": "0.1.4",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/90",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "CustomButtons.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

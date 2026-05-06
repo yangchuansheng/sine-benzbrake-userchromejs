@@ -1,0 +1,18 @@
+{
+  "id": "109__unifiedextensionsenhance",
+  "name": "unifiedExtensionsEnhance.uc.js",
+  "description": "Once Firefox has implemented the functionality, the script can be removed.",
+  "version": "0.1.7",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/109",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "unifiedExtensionsEnhance.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

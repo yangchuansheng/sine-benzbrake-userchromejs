@@ -1,0 +1,18 @@
+{
+  "id": "dav_linkifieslocationbar",
+  "name": "dav_LinkifiesLocationBar",
+  "description": "dav_LinkifiesLocationBar",
+  "version": "1.1",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "dav_LinkifiesLocationBar.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

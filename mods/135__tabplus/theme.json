@@ -1,0 +1,19 @@
+{
+  "id": "135__tabplus",
+  "name": "TabPlus.uc.js",
+  "description": "设置标签的打开方式",
+  "version": "1.0.7",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/135",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "TabPlus.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "MIT License"
+}

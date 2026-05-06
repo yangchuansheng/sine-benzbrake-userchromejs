@@ -1,0 +1,18 @@
+{
+  "id": "78__openwith",
+  "name": "OpenWith.uc.js",
+  "description": "用其他浏览器打开页面、链接、书签及标签",
+  "version": "2022.05.18",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/78",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "OpenWith.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

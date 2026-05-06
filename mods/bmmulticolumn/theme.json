@@ -1,0 +1,18 @@
+{
+  "id": "bmmulticolumn",
+  "name": "BMMultiColumn.uc.js",
+  "description": "书签菜单自动分列显示（先上下后左右）",
+  "version": "2026.04.09",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "BMMultiColumn.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

@@ -1,0 +1,18 @@
+{
+  "id": "136__aboutconfig_menu",
+  "name": "about:config shortcut menu",
+  "description": "Migrated 136/aboutconfig_menu.uc.js from benzBrake/FirefoxCustomize userChromeJS.",
+  "version": "1.0.0",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/136",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "aboutconfig_menu.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

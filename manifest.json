@@ -1,0 +1,1580 @@
+[
+  {
+    "id": "000",
+    "sourcePath": "000-$.sys.mjs",
+    "name": "000-$.sys.mjs",
+    "kind": "library",
+    "include": [],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "000-syncify",
+    "sourcePath": "000-syncify.sys.mjs",
+    "name": "000-syncify.sys.mjs",
+    "kind": "library",
+    "include": [],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "100__browsertoolbox",
+    "sourcePath": "100/browsertoolbox.uc.js",
+    "name": "browsertoolbox.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "102__bmmulticolumn",
+    "sourcePath": "102/BMMultiColumn.uc.js",
+    "name": "BMMultiColumn.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "103__privatetab",
+    "sourcePath": "103/privateTab.uc.js",
+    "name": "PrivateTab",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul",
+      "chrome://browser/content/places/bookmarksSidebar.xhtml",
+      "chrome://browser/content/places/historySidebar.xhtml",
+      "chrome://browser/content/places/places.xhtml"
+    ],
+    "license": "",
+    "assets": [
+      "verticalTabsPane.uc.js"
+    ]
+  },
+  {
+    "id": "103__verticaltabspane",
+    "sourcePath": "103/verticalTabsPane.uc.js",
+    "name": "Vertical Tabs Pane",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "This Source Code Form is subject to the terms of the Creative Commons Attribution-NonCommercial-ShareAlike International License, v. 4.0. If a copy of the CC BY-NC-SA 4.0 was not distributed with this file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.",
+    "assets": [
+      "privateTab.uc.js"
+    ]
+  },
+  {
+    "id": "104__unifiedextensionsenhance",
+    "sourcePath": "104/unifiedExtensionsEnhance.uc.js",
+    "name": "unifiedExtensionsEnhance.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "107__locationbar",
+    "sourcePath": "107/LocationBar.uc.js",
+    "name": "LocationBar.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xul",
+      "chrome://browser/content/browser.xhtml"
+    ],
+    "license": "MIT License",
+    "assets": [
+      "SidebarModoki.uc.js",
+      "StatusBar.uc.js"
+    ]
+  },
+  {
+    "id": "107__sidebarmodoki",
+    "sourcePath": "107/SidebarModoki.uc.js",
+    "name": "SidebarModoki",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "LocationBar.uc.js",
+      "StatusBar.uc.js"
+    ]
+  },
+  {
+    "id": "107__statusbar",
+    "sourcePath": "107/StatusBar.uc.js",
+    "name": "StatusBar.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xul",
+      "chrome://browser/content/browser.xhtml"
+    ],
+    "license": "MIT License",
+    "assets": [
+      "LocationBar.uc.js",
+      "SidebarModoki.uc.js"
+    ]
+  },
+  {
+    "id": "109__autopopup",
+    "sourcePath": "109/AutoPopup.uc.js",
+    "name": "AutoPopup.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "unifiedExtensionsEnhance.uc.js"
+    ]
+  },
+  {
+    "id": "109__unifiedextensionsenhance",
+    "sourcePath": "109/unifiedExtensionsEnhance.uc.js",
+    "name": "unifiedExtensionsEnhance.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "AutoPopup.uc.js"
+    ]
+  },
+  {
+    "id": "113__sidebarmodoki",
+    "sourcePath": "113/SidebarModoki.uc.js",
+    "name": "SidebarModoki",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "privateTabs.uc.js"
+    ]
+  },
+  {
+    "id": "113__privatetabs",
+    "sourcePath": "113/privateTabs.uc.js",
+    "name": "Private Tabs",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul",
+      "chrome://browser/content/places/bookmarksSidebar.xhtml",
+      "chrome://browser/content/places/historySidebar.xhtml",
+      "chrome://browser/content/places/places.xhtml"
+    ],
+    "license": "This Source Code Form is subject to the terms of the Creative Commons Attribution-NonCommercial-ShareAlike International License, v. 4.0. If a copy of the CC BY-NC-SA 4.0 was not distributed with this file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.",
+    "assets": [
+      "SidebarModoki.uc.js"
+    ]
+  },
+  {
+    "id": "117__baidutranslator",
+    "sourcePath": "117/BaiduTranslator.uc.js",
+    "name": "Baidu Translator",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "127__autosavescreenshot",
+    "sourcePath": "127/AutoSaveScreenshot.uc.js",
+    "name": "AutoSaveScreenshot.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "MIT License",
+    "assets": []
+  },
+  {
+    "id": "134__unreadtabmods",
+    "sourcePath": "134/unreadTabMods.uc.js",
+    "name": "Unread Tab Mods",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "This Source Code Form is subject to the terms of the Creative Commons Attribution-NonCommercial-ShareAlike International License, v. 4.0. If a copy of the CC BY-NC-SA 4.0 was not distributed with this file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.",
+    "assets": [
+      "verticalTabsPane.uc.js"
+    ]
+  },
+  {
+    "id": "134__verticaltabspane",
+    "sourcePath": "134/verticalTabsPane.uc.js",
+    "name": "Vertical Tabs Pane",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "This Source Code Form is subject to the terms of the Creative Commons Attribution-NonCommercial-ShareAlike International License, v. 4.0. If a copy of the CC BY-NC-SA 4.0 was not distributed with this file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.",
+    "assets": [
+      "unreadTabMods.uc.js"
+    ]
+  },
+  {
+    "id": "135__tabplus",
+    "sourcePath": "135/TabPlus.uc.js",
+    "name": "TabPlus.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "MIT License",
+    "assets": []
+  },
+  {
+    "id": "136__aboutconfig_menu",
+    "sourcePath": "136/aboutconfig_menu.uc.js",
+    "name": "about:config shortcut menu",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "revivalOldHistorySidebar.uc.js"
+    ]
+  },
+  {
+    "id": "136__revivaloldhistorysidebar",
+    "sourcePath": "136/revivalOldHistorySidebar.uc.js",
+    "name": "revivalOldHistorySidebar.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul",
+      "chrome://browser/content/places/historySidebar.xhtml?revamped"
+    ],
+    "license": "",
+    "assets": [
+      "aboutconfig_menu.uc.js"
+    ]
+  },
+  {
+    "id": "137__statusbar",
+    "sourcePath": "137/StatusBar.uc.js",
+    "name": "StatusBar.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xul",
+      "chrome://browser/content/browser.xhtml"
+    ],
+    "license": "MIT License",
+    "assets": []
+  },
+  {
+    "id": "57__autopopup",
+    "sourcePath": "57/AutoPopup.uc.js",
+    "name": "AutoPopup",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "BookmarkOpt.uc.js",
+      "ReloadAllTabs.uc.js"
+    ]
+  },
+  {
+    "id": "57__bookmarkopt",
+    "sourcePath": "57/BookmarkOpt.uc.js",
+    "name": "BookmarkOpt.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul",
+      "chrome://browser/content/places/places.xhtml",
+      "chrome://browser/content/places/places.xul",
+      "chrome://browser/content/places/bookmarksSidebar.xhtml",
+      "chrome://browser/content/bookmarks/bookmarksPanel.xul",
+      "chrome://browser/content/places/historySidebar.xhtml",
+      "chrome://browser/content/places/historySidebar.xul"
+    ],
+    "license": "",
+    "assets": [
+      "AutoPopup.uc.js",
+      "ReloadAllTabs.uc.js"
+    ]
+  },
+  {
+    "id": "57__reloadalltabs",
+    "sourcePath": "57/ReloadAllTabs.uc.js",
+    "name": "ReloadAllTabs.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xul",
+      "chrome://browser/content/browser.xhtml"
+    ],
+    "license": "MIT License",
+    "assets": [
+      "AutoPopup.uc.js",
+      "BookmarkOpt.uc.js"
+    ]
+  },
+  {
+    "id": "68__addbookmarkhere",
+    "sourcePath": "68/AddBookmarkHere.uc.js",
+    "name": "添加书签到此处",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/places/places.xhtml"
+    ],
+    "license": "",
+    "assets": [
+      "downloadPlus.png",
+      "downloadPlus.uc.js"
+    ]
+  },
+  {
+    "id": "68__downloadplus",
+    "sourcePath": "68/downloadPlus.uc.js",
+    "name": "downloadPlus.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://mozapps/content/downloads/unknownContentType.xul"
+    ],
+    "license": "",
+    "assets": [
+      "AddBookmarkHere.uc.js",
+      "downloadPlus.png"
+    ]
+  },
+  {
+    "id": "69__autopopup",
+    "sourcePath": "69/autoPopup++.uc.js",
+    "name": "autoPopup++.uc",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "70__firefox_toolbarbuttons",
+    "sourcePath": "70/Firefox_ToolBarButtons.uc.js",
+    "name": "Firefox_ToolBarButtons.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "Tabplus.uc.js",
+      "saveUCJS.uc.js",
+      "verticalAddOnBar.uc.js"
+    ]
+  },
+  {
+    "id": "70__tabplus",
+    "sourcePath": "70/Tabplus.uc.js",
+    "name": "Tabplus.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xul",
+      "chrome://browser/content/browser.xhtml"
+    ],
+    "license": "MIT License",
+    "assets": [
+      "Firefox_ToolBarButtons.uc.js",
+      "saveUCJS.uc.js",
+      "verticalAddOnBar.uc.js"
+    ]
+  },
+  {
+    "id": "70__saveucjs",
+    "sourcePath": "70/saveUCJS.uc.js",
+    "name": "saveUCJS.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "Firefox_ToolBarButtons.uc.js",
+      "Tabplus.uc.js",
+      "verticalAddOnBar.uc.js"
+    ]
+  },
+  {
+    "id": "70__verticaladdonbar",
+    "sourcePath": "70/verticalAddOnBar.uc.js",
+    "name": "verticalAddOnBar.uc",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "Firefox_ToolBarButtons.uc.js",
+      "Tabplus.uc.js",
+      "saveUCJS.uc.js"
+    ]
+  },
+  {
+    "id": "72__addmenuplus_fx72",
+    "sourcePath": "72/addMenuPlus_fx72.uc.js",
+    "name": "addMenuPlus.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "MIT License",
+    "assets": [
+      "adjustPanelViewPosition.uc.js"
+    ]
+  },
+  {
+    "id": "72__adjustpanelviewposition",
+    "sourcePath": "72/adjustPanelViewPosition.uc.js",
+    "name": "adjustPanelViewPosition.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "MIT License",
+    "assets": [
+      "addMenuPlus_fx72.uc.js"
+    ]
+  },
+  {
+    "id": "78__baidutranslator",
+    "sourcePath": "78/BaiduTranslator.uc.js",
+    "name": "Baidu Translator",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "OpenWith.uc.js",
+      "SyncStyles.uc.js"
+    ]
+  },
+  {
+    "id": "78__openwith",
+    "sourcePath": "78/OpenWith.uc.js",
+    "name": "OpenWith.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "BaiduTranslator.uc.js",
+      "SyncStyles.uc.js"
+    ]
+  },
+  {
+    "id": "78__syncstyles",
+    "sourcePath": "78/SyncStyles.uc.js",
+    "name": "Sync Styles",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "BaiduTranslator.uc.js",
+      "OpenWith.uc.js"
+    ]
+  },
+  {
+    "id": "80__copycat__copycat",
+    "sourcePath": "80/CopyCat/CopyCat.uc.js",
+    "name": "CopyCat.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "_copycat.js",
+      "images/",
+      "locales/"
+    ]
+  },
+  {
+    "id": "80__saveucjs",
+    "sourcePath": "80/saveUCJS.uc.js",
+    "name": "saveUCJS.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "ucf_drag_ModR.uc.js"
+    ]
+  },
+  {
+    "id": "80__ucf_drag_modr",
+    "sourcePath": "80/ucf_drag_ModR.uc.js",
+    "name": "ucf_drag_ModR.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "saveUCJS.uc.js"
+    ]
+  },
+  {
+    "id": "90__custombuttons",
+    "sourcePath": "90/CustomButtons.uc.js",
+    "name": "CustomButtons.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "PersonalToolbarAutoHide.uc.js",
+      "QuickSnapshot_Mod.uc.js",
+      "UpdateBookmarkLite.uc.js",
+      "YouGetBtn.uc.js",
+      "addToolbarInsideLocationBar.uc.js",
+      "downloadsBtnMod.uc.js",
+      "rightClickOpenClipboard.uc.js",
+      "showPersonalToolbarOnDemand.uc.js"
+    ]
+  },
+  {
+    "id": "90__personaltoolbarautohide",
+    "sourcePath": "90/PersonalToolbarAutoHide.uc.js",
+    "name": "PersonalToolbarAutoHide.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml"
+    ],
+    "license": "",
+    "assets": [
+      "CustomButtons.uc.js",
+      "QuickSnapshot_Mod.uc.js",
+      "UpdateBookmarkLite.uc.js",
+      "YouGetBtn.uc.js",
+      "addToolbarInsideLocationBar.uc.js",
+      "downloadsBtnMod.uc.js",
+      "rightClickOpenClipboard.uc.js",
+      "showPersonalToolbarOnDemand.uc.js"
+    ]
+  },
+  {
+    "id": "90__quicksnapshot_mod",
+    "sourcePath": "90/QuickSnapshot_Mod.uc.js",
+    "name": "可移动多功能截图按钮",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "CustomButtons.uc.js",
+      "PersonalToolbarAutoHide.uc.js",
+      "UpdateBookmarkLite.uc.js",
+      "YouGetBtn.uc.js",
+      "addToolbarInsideLocationBar.uc.js",
+      "downloadsBtnMod.uc.js",
+      "rightClickOpenClipboard.uc.js",
+      "showPersonalToolbarOnDemand.uc.js"
+    ]
+  },
+  {
+    "id": "90__updatebookmarklite",
+    "sourcePath": "90/UpdateBookmarkLite.uc.js",
+    "name": "UpdateBookmarkLite.uc",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "CustomButtons.uc.js",
+      "PersonalToolbarAutoHide.uc.js",
+      "QuickSnapshot_Mod.uc.js",
+      "YouGetBtn.uc.js",
+      "addToolbarInsideLocationBar.uc.js",
+      "downloadsBtnMod.uc.js",
+      "rightClickOpenClipboard.uc.js",
+      "showPersonalToolbarOnDemand.uc.js"
+    ]
+  },
+  {
+    "id": "90__yougetbtn",
+    "sourcePath": "90/YouGetBtn.uc.js",
+    "name": "YouGetBtn.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "CustomButtons.uc.js",
+      "PersonalToolbarAutoHide.uc.js",
+      "QuickSnapshot_Mod.uc.js",
+      "UpdateBookmarkLite.uc.js",
+      "addToolbarInsideLocationBar.uc.js",
+      "downloadsBtnMod.uc.js",
+      "rightClickOpenClipboard.uc.js",
+      "showPersonalToolbarOnDemand.uc.js"
+    ]
+  },
+  {
+    "id": "90__addtoolbarinsidelocationbar",
+    "sourcePath": "90/addToolbarInsideLocationBar.uc.js",
+    "name": "000-addToolbarInsideLocationBar.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "CustomButtons.uc.js",
+      "PersonalToolbarAutoHide.uc.js",
+      "QuickSnapshot_Mod.uc.js",
+      "UpdateBookmarkLite.uc.js",
+      "YouGetBtn.uc.js",
+      "downloadsBtnMod.uc.js",
+      "rightClickOpenClipboard.uc.js",
+      "showPersonalToolbarOnDemand.uc.js"
+    ]
+  },
+  {
+    "id": "90__downloadsbtnmod",
+    "sourcePath": "90/downloadsBtnMod.uc.js",
+    "name": "downloadsBtnMod.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml"
+    ],
+    "license": "MIT License",
+    "assets": [
+      "CustomButtons.uc.js",
+      "PersonalToolbarAutoHide.uc.js",
+      "QuickSnapshot_Mod.uc.js",
+      "UpdateBookmarkLite.uc.js",
+      "YouGetBtn.uc.js",
+      "addToolbarInsideLocationBar.uc.js",
+      "rightClickOpenClipboard.uc.js",
+      "showPersonalToolbarOnDemand.uc.js"
+    ]
+  },
+  {
+    "id": "90__rightclickopenclipboard",
+    "sourcePath": "90/rightClickOpenClipboard.uc.js",
+    "name": "右键「新建标签按钮」访问剪切板内容",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul",
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "CustomButtons.uc.js",
+      "PersonalToolbarAutoHide.uc.js",
+      "QuickSnapshot_Mod.uc.js",
+      "UpdateBookmarkLite.uc.js",
+      "YouGetBtn.uc.js",
+      "addToolbarInsideLocationBar.uc.js",
+      "downloadsBtnMod.uc.js",
+      "showPersonalToolbarOnDemand.uc.js"
+    ]
+  },
+  {
+    "id": "90__showpersonaltoolbarondemand",
+    "sourcePath": "90/showPersonalToolbarOnDemand.uc.js",
+    "name": "showPersonalToolbarOnDemand.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml"
+    ],
+    "license": "MIT License",
+    "assets": [
+      "CustomButtons.uc.js",
+      "PersonalToolbarAutoHide.uc.js",
+      "QuickSnapshot_Mod.uc.js",
+      "UpdateBookmarkLite.uc.js",
+      "YouGetBtn.uc.js",
+      "addToolbarInsideLocationBar.uc.js",
+      "downloadsBtnMod.uc.js",
+      "rightClickOpenClipboard.uc.js"
+    ]
+  },
+  {
+    "id": "95__bookmarksmenu_scrollbar",
+    "sourcePath": "95/bookmarksmenu_scrollbar.uc.js",
+    "name": "bookmarksmenu_scrollbar.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "96__privatetab",
+    "sourcePath": "96/privateTab.uc.js",
+    "name": "privateTab.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul",
+      "chrome://browser/content/places/bookmarksSidebar.xhtml",
+      "chrome://browser/content/places/historySidebar.xhtml",
+      "chrome://browser/content/places/places.xhtml"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "addonspage_fx72",
+    "sourcePath": "AddonsPage_fx72.uc.js",
+    "name": "AddonsPage.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "autocompletedeletebutton",
+    "sourcePath": "AutoCompleteDeleteButton.uc.js",
+    "name": "AutoCompleteDeleteButton.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "MIT License",
+    "assets": []
+  },
+  {
+    "id": "autocopyselectiontext__autocopyselectiontext.loader",
+    "sourcePath": "AutoCopySelectionText/AutoCopySelectionText.loader.uc.js",
+    "name": "AutoCopySelectionTextLegacyAdapter.uc.js",
+    "kind": "library",
+    "include": [],
+    "license": "",
+    "assets": [
+      "AutoCopySelectionText.uc.js",
+      "AutoCopySelectionText.uc.mjs"
+    ]
+  },
+  {
+    "id": "autocopyselectiontext__autocopyselectiontext",
+    "sourcePath": "AutoCopySelectionText/AutoCopySelectionText.uc.js",
+    "name": "AutoCopySelectionText.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "MIT License",
+    "assets": [
+      "AutoCopySelectionText.loader.uc.js",
+      "AutoCopySelectionText.uc.mjs"
+    ]
+  },
+  {
+    "id": "autocopyselectiontext__autocopyselectiontext-2",
+    "sourcePath": "AutoCopySelectionText/AutoCopySelectionText.uc.mjs",
+    "name": "AutoCopySelectionText.uc.mjs",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "MIT License",
+    "assets": [
+      "AutoCopySelectionText.loader.uc.js",
+      "AutoCopySelectionText.uc.js"
+    ]
+  },
+  {
+    "id": "autohidetabstoolbar",
+    "sourcePath": "AutoHideTabsToolbar.uc.js",
+    "name": "autoHideTabsToolbar",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "MIT License",
+    "assets": []
+  },
+  {
+    "id": "bmmulticolumn",
+    "sourcePath": "BMMultiColumn.uc.js",
+    "name": "BMMultiColumn.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "bookmarkopt",
+    "sourcePath": "BookmarkOpt.uc.js",
+    "name": "BookmarkOpt.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul",
+      "chrome://browser/content/places/places.xhtml",
+      "chrome://browser/content/places/places.xul",
+      "chrome://browser/content/places/bookmarksSidebar.xhtml",
+      "chrome://browser/content/bookmarks/bookmarksPanel.xul",
+      "chrome://browser/content/places/historySidebar.xhtml",
+      "chrome://browser/content/history/history-panel.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "colorfultabs",
+    "sourcePath": "ColorfulTabs.uc.js",
+    "name": "ColorfulTabs.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml"
+    ],
+    "license": "MIT License",
+    "assets": []
+  },
+  {
+    "id": "copycattheme__copycattheme",
+    "sourcePath": "CopyCatTheme/CopyCatTheme.uc.js",
+    "name": "CopyCatTheme.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://userchrome/content/utils/ThemeOptions.html"
+    ],
+    "license": "MIT License",
+    "assets": [
+      "CopyCatTheme.zip",
+      "images/"
+    ]
+  },
+  {
+    "id": "copyplaintext",
+    "sourcePath": "CopyPlainText.uc.js",
+    "name": "CopyPlainText.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "custombuttons",
+    "sourcePath": "CustomButtons.uc.js",
+    "name": "CustomButtons.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "extensionsoptionsmenu__extension-options-menu",
+    "sourcePath": "ExtensionsOptionsMenu/Extension Options Menu.uc.js",
+    "name": "Extension Options Menu.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "extensionOptionsMenu.uc.js"
+    ]
+  },
+  {
+    "id": "extensionsoptionsmenu__extensionoptionsmenu",
+    "sourcePath": "ExtensionsOptionsMenu/extensionOptionsMenu.uc.js",
+    "name": "Extension Options Menu",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "Extension Options Menu.uc.js"
+    ]
+  },
+  {
+    "id": "homeendfixer",
+    "sourcePath": "HomeEndFixer.uc.js",
+    "name": "HomeEndFixer.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xul",
+      "chrome://browser/content/browser.xhtml"
+    ],
+    "license": "MIT License",
+    "assets": []
+  },
+  {
+    "id": "keychanger__keychanger",
+    "sourcePath": "KeyChanger/KeyChanger.uc.js",
+    "name": "KeyChanger.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "MIT License",
+    "assets": [
+      "KeyChanger_fx70.uc.js",
+      "README-en.md",
+      "_keychanger.js"
+    ]
+  },
+  {
+    "id": "keychanger__keychanger_fx70",
+    "sourcePath": "KeyChanger/KeyChanger_fx70.uc.js",
+    "name": "KeyChanger.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul",
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "MIT License",
+    "assets": [
+      "KeyChanger.uc.js",
+      "README-en.md",
+      "_keychanger.js"
+    ]
+  },
+  {
+    "id": "linkgopher",
+    "sourcePath": "LinkGopher.uc.js",
+    "name": "LinkGopher.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "MIT License",
+    "assets": []
+  },
+  {
+    "id": "locationbar",
+    "sourcePath": "LocationBar.uc.js",
+    "name": "LocationBar.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xul",
+      "chrome://browser/content/browser.xhtml"
+    ],
+    "license": "MIT License",
+    "assets": []
+  },
+  {
+    "id": "menubarreplacewithbutton",
+    "sourcePath": "MenubarReplaceWithButton.uc.js",
+    "name": "MenubarReplaceWithButton.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "openwithhelper__openwithhelper",
+    "sourcePath": "OpenWithHelper/OpenWithHelper.uc.js",
+    "name": "OpenWithHelper.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": [
+      "locales/"
+    ]
+  },
+  {
+    "id": "pipmod",
+    "sourcePath": "PipMod.uc.js",
+    "name": "PipMod.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://global/content/pictureinpicture/player.xhtml"
+    ],
+    "license": "MIT License",
+    "assets": []
+  },
+  {
+    "id": "saveaspng",
+    "sourcePath": "SaveAsPNG.uc.js",
+    "name": "SaveAsPNG.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "screenshottools",
+    "sourcePath": "ScreenshotTools.uc.js",
+    "name": "ScreenshotTools.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "MIT License",
+    "assets": []
+  },
+  {
+    "id": "sidebarmodoki__sidebarmodoki",
+    "sourcePath": "SidebarModoki/SidebarModoki.uc.js",
+    "name": "SidebarModoki",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul",
+      ""
+    ],
+    "license": "",
+    "assets": [
+      "_sidebar_modoki.json"
+    ]
+  },
+  {
+    "id": "statusbar",
+    "sourcePath": "StatusBar.uc.js",
+    "name": "StatusBar.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xul",
+      "chrome://browser/content/browser.xhtml"
+    ],
+    "license": "MIT License",
+    "assets": []
+  },
+  {
+    "id": "tabplus",
+    "sourcePath": "TabPlus.uc.js",
+    "name": "TabPlus.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "MIT License",
+    "assets": []
+  },
+  {
+    "id": "toolbarautohide",
+    "sourcePath": "ToolbarAutoHide.uc.js",
+    "name": "ToolbarAutoHide.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "undoclosetabbuttonn",
+    "sourcePath": "UndoCloseTabButtonN.uc.js",
+    "name": "UndoCloseTabButtonN",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "unifiedextensionssearch",
+    "sourcePath": "UnifiedExtensionsSearch.uc.js",
+    "name": "UnifiedExtensionsSearch.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "MIT",
+    "assets": []
+  },
+  {
+    "id": "usercssloader__usercssloader",
+    "sourcePath": "UserCSSLoader/UserCSSLoader.uc.js",
+    "name": "UserCSSLoader",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "MIT License",
+    "assets": [
+      "locales/"
+    ]
+  },
+  {
+    "id": "addmenuplus__addmenuplus.loader",
+    "sourcePath": "addMenuPlus/addMenuPlus.loader.uc.js",
+    "name": "addMenuPlusLegacyAdapter.uc.js",
+    "kind": "library",
+    "include": [],
+    "license": "",
+    "assets": [
+      "_addmenu.js",
+      "addMenuPlus.uc.js",
+      "addMenuPlus.uc.mjs",
+      "images/"
+    ]
+  },
+  {
+    "id": "addmenuplus__addmenuplus",
+    "sourcePath": "addMenuPlus/addMenuPlus.uc.js",
+    "name": "addMenuPlus.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "MIT License",
+    "assets": [
+      "_addmenu.js",
+      "addMenuPlus.loader.uc.js",
+      "addMenuPlus.uc.mjs",
+      "images/"
+    ]
+  },
+  {
+    "id": "addmenuplus__addmenuplus-2",
+    "sourcePath": "addMenuPlus/addMenuPlus.uc.mjs",
+    "name": "addMenuPlus.uc.mjs",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "MIT License",
+    "assets": [
+      "000-$.sys.mjs",
+      "000-syncify.sys.mjs",
+      "_addmenu.js",
+      "addMenuPlus.loader.uc.js",
+      "addMenuPlus.uc.js",
+      "images/"
+    ]
+  },
+  {
+    "id": "contextmenuslidedown",
+    "sourcePath": "contextMenuSlideDown.uc.js",
+    "name": "contextMenuSlideDown.uc.js",
+    "kind": "script",
+    "include": [
+      ".*"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "dav_linkifieslocationbar",
+    "sourcePath": "dav_LinkifiesLocationBar.uc.js",
+    "name": "dav_LinkifiesLocationBar",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "extensionstylesheetloader",
+    "sourcePath": "extensionStylesheetLoader.uc.js",
+    "name": "Extension Stylesheet Loader",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "This Source Code Form is subject to the terms of the Creative Commons Attribution-NonCommercial-ShareAlike International License, v. 4.0. If a copy of the CC BY-NC-SA 4.0 was not distributed with this file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.",
+    "assets": []
+  },
+  {
+    "id": "middleclickopentabcontextmenu",
+    "sourcePath": "middleClickOpenTabContextMenu.uc.js",
+    "name": "中键打开标签菜单",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml"
+    ],
+    "license": "MIT License",
+    "assets": []
+  },
+  {
+    "id": "miscmods",
+    "sourcePath": "miscMods.uc.js",
+    "name": "miscMods.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xul",
+      "chrome://browser/content/browser.xhtml"
+    ],
+    "license": "MIT License",
+    "assets": []
+  },
+  {
+    "id": "movableoverflowbutton",
+    "sourcePath": "movableOverflowButton.uc.js",
+    "name": "movableOverflowButton.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "movablepaneluibutton",
+    "sourcePath": "movablePanelUIButton.uc.js",
+    "name": "movablePanelUIButton.uc",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "movereloadintourl",
+    "sourcePath": "moveReloadIntoUrl.uc.js",
+    "name": "moveReloadIntoUrl.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "newtab-aboutconfig",
+    "sourcePath": "newtab-aboutconfig.uc.js",
+    "name": "newtab-aboutconfig.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "patchforbug1894910_allow_search_with_empty_text",
+    "sourcePath": "patchForBug1894910_allow_search_with_empty_text.uc.js",
+    "name": "patchForBug1894910_allow_search_with_empty_text.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "privatetab__privatetab",
+    "sourcePath": "privateTab/privateTab.uc.js",
+    "name": "PrivateTab",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul",
+      "chrome://browser/content/places/bookmarksSidebar.xhtml",
+      "chrome://browser/content/places/historySidebar.xhtml",
+      "chrome://browser/content/places/places.xhtml"
+    ],
+    "license": "",
+    "assets": [
+      "locales/",
+      "privateTabs.uc.js"
+    ]
+  },
+  {
+    "id": "privatetab__privatetabs",
+    "sourcePath": "privateTab/privateTabs.uc.js",
+    "name": "Private Tabs",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul",
+      "chrome://browser/content/places/bookmarksSidebar.xhtml",
+      "chrome://browser/content/places/historySidebar.xhtml",
+      "chrome://browser/content/places/places.xhtml"
+    ],
+    "license": "This Source Code Form is subject to the terms of the Creative Commons Attribution-NonCommercial-ShareAlike International License, v. 4.0. If a copy of the CC BY-NC-SA 4.0 was not distributed with this file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.",
+    "assets": [
+      "locales/",
+      "privateTab.uc.js"
+    ]
+  },
+  {
+    "id": "rebuild_userchrome",
+    "sourcePath": "rebuild_userChrome.uc.js",
+    "name": "userChromeJS Manager",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "restoreoldstylecleanhistory",
+    "sourcePath": "restoreOldStyleCleanHistory.uc.js",
+    "name": "restoreOldStyleCleanHistory.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "restoreoldstylelaunchapplication",
+    "sourcePath": "restoreOldStyleLaunchApplication.uc.js",
+    "name": "restoreOldStyleLaunchApplication.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "saveucjs",
+    "sourcePath": "saveUCJS.uc.js",
+    "name": "saveUCJS.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "setviewsourceeditor",
+    "sourcePath": "setViewSourceEditor.uc.js",
+    "name": "setViewSourceEditor.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "showlimitedtimetheme",
+    "sourcePath": "showLimitedTimeTheme.uc.js",
+    "name": "显示限时主题",
+    "kind": "script",
+    "include": [
+      "about:addons"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "sidebarattrubesdetector",
+    "sourcePath": "sidebarAttrubesDetector.uc.js",
+    "name": "sidebarAttrubesDetector.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "synctabsmod",
+    "sourcePath": "syncTabsMod.uc.js",
+    "name": "syncTabsMod.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/syncedtabs/sidebar.xhtml"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "tabnotifitionbadge",
+    "sourcePath": "tabNotifitionBadge.uc.js",
+    "name": "tabNotifitionBadge.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml"
+    ],
+    "license": "MIT License",
+    "assets": []
+  },
+  {
+    "id": "textzoomperdomain_e10s",
+    "sourcePath": "textZoomPerDomain_e10s.uc.js",
+    "name": "textZoomPerDomain_e10s.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "textzoomtool",
+    "sourcePath": "textZoomTool.uc.js",
+    "name": "textZoomTool",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "toggleextensions",
+    "sourcePath": "toggleExtensions.uc.js",
+    "name": "toggleExtensions.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "MIT License",
+    "assets": []
+  },
+  {
+    "id": "ucf_autopopup",
+    "sourcePath": "ucf_autoPopup.uc.js",
+    "name": "ucf_autoPopup.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "ucf_drag_modr",
+    "sourcePath": "ucf_drag_ModR.uc.js",
+    "name": "ucf_drag_ModR.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "uidensity",
+    "sourcePath": "uiDensity.uc.js",
+    "name": "UI Density",
+    "kind": "script",
+    "include": [
+      ".*"
+    ],
+    "license": "",
+    "assets": []
+  },
+  {
+    "id": "unifiedextensionsenhance",
+    "sourcePath": "unifiedExtensionsEnhance.uc.js",
+    "name": "unifiedExtensionsEnhance.uc.js",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "",
+    "assets": []
+  }
+]

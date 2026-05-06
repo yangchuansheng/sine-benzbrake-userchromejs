@@ -1,0 +1,18 @@
+{
+  "id": "copyplaintext",
+  "name": "CopyPlainText.uc.js",
+  "description": "右键菜单复制和Ctrl+C强制复制纯文本",
+  "version": "0.0.1",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "CopyPlainText.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

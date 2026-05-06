@@ -1,0 +1,19 @@
+{
+  "id": "72__addmenuplus_fx72",
+  "name": "addMenuPlus.uc.js",
+  "description": "通过配置文件增加修改菜单，修改版",
+  "version": "0.2.1 r4",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/72",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "addMenuPlus_fx72.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "MIT License"
+}

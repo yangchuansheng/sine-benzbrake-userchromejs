@@ -1,0 +1,19 @@
+{
+  "id": "miscmods",
+  "name": "miscMods.uc.js",
+  "description": "Migrated miscMods.uc.js from benzBrake/FirefoxCustomize userChromeJS.",
+  "version": "20260330.4",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "miscMods.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xul",
+        "chrome://browser/content/browser.xhtml"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "MIT License"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "90__downloadsbtnmod",
+  "name": "downloadsBtnMod.uc.js",
+  "description": "下载按钮功能增强",
+  "version": "1.0.0",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/90",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "downloadsBtnMod.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "MIT License"
+}

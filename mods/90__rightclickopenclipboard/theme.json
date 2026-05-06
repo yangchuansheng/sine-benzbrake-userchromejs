@@ -1,0 +1,20 @@
+{
+  "id": "90__rightclickopenclipboard",
+  "name": "右键「新建标签按钮」访问剪切板内容",
+  "description": "Migrated userChromeJS script from benzBrake/FirefoxCustomize.",
+  "version": "1.0.0",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/90",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "rightClickOpenClipboard.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul",
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

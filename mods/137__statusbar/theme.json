@@ -1,0 +1,19 @@
+{
+  "id": "137__statusbar",
+  "name": "StatusBar.uc.js",
+  "description": "状态栏",
+  "version": "0.0.5",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/137",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "StatusBar.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xul",
+        "chrome://browser/content/browser.xhtml"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "MIT License"
+}

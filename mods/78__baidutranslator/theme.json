@@ -1,0 +1,18 @@
+{
+  "id": "78__baidutranslator",
+  "name": "Baidu Translator",
+  "description": "在上下文菜单中添加使用百度翻译所选文本的功能",
+  "version": "1.0.0",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/78",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "BaiduTranslator.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

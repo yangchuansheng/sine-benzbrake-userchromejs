@@ -1,0 +1,18 @@
+{
+  "id": "pipmod",
+  "name": "PipMod.uc.js",
+  "description": "视频小窗修改，给 documentElement 增加 uc-host 属性，添加默认彩虹猫进度条样式和 BIlibili 进度条样式",
+  "version": "0.0.1",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "PipMod.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://global/content/pictureinpicture/player.xhtml"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "MIT License"
+}

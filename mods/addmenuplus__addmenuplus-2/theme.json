@@ -1,0 +1,19 @@
+{
+  "id": "addmenuplus__addmenuplus-2",
+  "name": "addMenuPlus.uc.mjs",
+  "description": "Migrated addMenuPlus/addMenuPlus.uc.mjs from benzBrake/FirefoxCustomize userChromeJS.",
+  "version": "0.3.1",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/addMenuPlus",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "addMenuPlus.uc.mjs": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "MIT License"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "screenshottools",
+  "name": "ScreenshotTools.uc.js",
+  "description": "Migrated ScreenshotTools.uc.js from benzBrake/FirefoxCustomize userChromeJS.",
+  "version": "0.0.3",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "ScreenshotTools.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "MIT License"
+}

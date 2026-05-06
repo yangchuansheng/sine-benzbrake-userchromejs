@@ -1,0 +1,10 @@
+{
+  "id": "000",
+  "name": "000-$.sys.mjs",
+  "description": "jQuery-like DOM selector for single element with Proxy wrapper This file is a helper/adapter and is not loaded by default.",
+  "version": "1.0.2",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {},
+  "supportsUnload": false
+}

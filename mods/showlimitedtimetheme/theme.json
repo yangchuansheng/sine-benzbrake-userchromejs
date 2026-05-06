@@ -1,0 +1,17 @@
+{
+  "id": "showlimitedtimetheme",
+  "name": "显示限时主题",
+  "description": "Migrated userChromeJS script from benzBrake/FirefoxCustomize.",
+  "version": "1.0.0",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "showLimitedTimeTheme.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "about:addons"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

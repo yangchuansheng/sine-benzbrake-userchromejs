@@ -1,0 +1,19 @@
+{
+  "id": "usercssloader__usercssloader",
+  "name": "UserCSSLoader",
+  "description": "Stylish みたいなもの",
+  "version": "0.0.6r5",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/UserCSSLoader",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "UserCSSLoader.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "MIT License"
+}

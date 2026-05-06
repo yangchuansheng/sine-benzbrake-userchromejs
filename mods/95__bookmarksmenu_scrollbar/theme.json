@@ -1,0 +1,18 @@
+{
+  "id": "95__bookmarksmenu_scrollbar",
+  "name": "bookmarksmenu_scrollbar.uc.js",
+  "description": "add scrollbar and hide scroll button for bookmarks menu",
+  "version": "2022/12/17 兼容 BMMultiColumn.uc.js",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/95",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "bookmarksmenu_scrollbar.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

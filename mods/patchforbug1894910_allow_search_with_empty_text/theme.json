@@ -1,0 +1,17 @@
+{
+  "id": "patchforbug1894910_allow_search_with_empty_text",
+  "name": "patchForBug1894910_allow_search_with_empty_text.uc.js",
+  "description": "undoing Bug 1894910 - Remove function to open search page from search bar with an empty search",
+  "version": "2024/06/4",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "patchForBug1894910_allow_search_with_empty_text.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

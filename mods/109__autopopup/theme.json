@@ -1,0 +1,18 @@
+{
+  "id": "109__autopopup",
+  "name": "AutoPopup.uc.js",
+  "description": "Auto popup menulist/menupopup",
+  "version": "2025.07.10",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/109",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "AutoPopup.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

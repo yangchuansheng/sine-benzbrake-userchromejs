@@ -1,0 +1,9 @@
+{
+  "id": "benzbrake-userchromejs-collection",
+  "name": "benzBrake FirefoxCustomize userChromeJS Collection",
+  "description": "Host repository for Sine-compatible packages migrated from benzBrake/FirefoxCustomize userChromeJS. Install individual mods from the mods/ directory.",
+  "version": "1.0.0",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "style": {},
+  "scripts": {}
+}

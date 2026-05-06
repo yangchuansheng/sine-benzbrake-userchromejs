@@ -1,0 +1,19 @@
+{
+  "id": "134__unreadtabmods",
+  "name": "Unread Tab Mods",
+  "description": "Modifies some javascript methods so that unread tabs can be",
+  "version": "1.2",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/134",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "unreadTabMods.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "This Source Code Form is subject to the terms of the Creative Commons Attribution-NonCommercial-ShareAlike International License, v. 4.0. If a copy of the CC BY-NC-SA 4.0 was not distributed with this file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA."
+}

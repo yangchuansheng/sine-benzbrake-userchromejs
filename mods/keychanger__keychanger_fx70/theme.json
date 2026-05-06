@@ -1,0 +1,21 @@
+{
+  "id": "keychanger__keychanger_fx70",
+  "name": "KeyChanger.uc.js",
+  "description": "Additional shortcuts for Firefox",
+  "version": "2023.07.27",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/KeyChanger",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "KeyChanger_fx70.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul",
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "MIT License"
+}

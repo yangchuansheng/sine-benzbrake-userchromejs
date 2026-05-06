@@ -1,0 +1,18 @@
+{
+  "id": "70__verticaladdonbar",
+  "name": "verticalAddOnBar.uc",
+  "description": "Migrated userChromeJS script from benzBrake/FirefoxCustomize.",
+  "version": "1.0.0",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/70",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "verticalAddOnBar.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

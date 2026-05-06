@@ -1,0 +1,18 @@
+{
+  "id": "ucf_autopopup",
+  "name": "ucf_autoPopup.uc.js",
+  "description": "自动弹出菜单，来自于 Mozilla-Russia 论坛",
+  "version": "2024.06.25",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "ucf_autoPopup.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

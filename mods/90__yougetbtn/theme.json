@@ -1,0 +1,18 @@
+{
+  "id": "90__yougetbtn",
+  "name": "YouGetBtn.uc.js",
+  "description": "调用 You-Get 下载网页视频",
+  "version": "1.0.0",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/90",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "YouGetBtn.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

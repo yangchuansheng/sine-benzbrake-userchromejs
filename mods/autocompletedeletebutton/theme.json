@@ -1,0 +1,19 @@
+{
+  "id": "autocompletedeletebutton",
+  "name": "AutoCompleteDeleteButton.uc.js",
+  "description": "为网页输入框的表单历史下拉添加删除按钮",
+  "version": "0.1.5",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "AutoCompleteDeleteButton.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "MIT License"
+}

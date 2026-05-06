@@ -1,0 +1,19 @@
+{
+  "id": "homeendfixer",
+  "name": "HomeEndFixer.uc.js",
+  "description": "让 Home / End 按键全局生效（部分全局鼠标手势软胶通过模拟点击 Home / End 实现回到顶部，前往底部，但是默认情况下焦点在输入框内内不生效会导致鼠标手势失效，而这个脚本可以让这两个按键全局生效）",
+  "version": "0.0.1",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "HomeEndFixer.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xul",
+        "chrome://browser/content/browser.xhtml"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "MIT License"
+}

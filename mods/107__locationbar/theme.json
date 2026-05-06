@@ -1,0 +1,19 @@
+{
+  "id": "107__locationbar",
+  "name": "LocationBar.uc.js",
+  "description": "地址栏内工具栏",
+  "version": "0.0.4",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/107",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "LocationBar.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xul",
+        "chrome://browser/content/browser.xhtml"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "MIT License"
+}

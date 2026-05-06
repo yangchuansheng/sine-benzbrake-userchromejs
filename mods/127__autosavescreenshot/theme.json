@@ -1,0 +1,19 @@
+{
+  "id": "127__autosavescreenshot",
+  "name": "AutoSaveScreenshot.uc.js",
+  "description": "一键保存截图，左键单击保存可见范围，Shift+左键保存整个页面",
+  "version": "0.0.3",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/127",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "AutoSaveScreenshot.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "MIT License"
+}

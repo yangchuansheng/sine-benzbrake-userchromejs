@@ -1,0 +1,17 @@
+{
+  "id": "68__downloadplus",
+  "name": "downloadPlus.uc.js",
+  "description": "下载窗口添加:另存为、双击复制链接、第三方工具下载",
+  "version": "2019.09.28",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/68",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "downloadPlus.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://mozapps/content/downloads/unknownContentType.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

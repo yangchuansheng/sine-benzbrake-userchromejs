@@ -1,0 +1,18 @@
+{
+  "id": "104__unifiedextensionsenhance",
+  "name": "unifiedExtensionsEnhance.uc.js",
+  "description": "Unified Extensions Button Enhance script, left click open options page, right click to swith addon status.",
+  "version": "0.1.4",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/104",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "unifiedExtensionsEnhance.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

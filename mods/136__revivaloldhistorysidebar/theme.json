@@ -1,0 +1,19 @@
+{
+  "id": "136__revivaloldhistorysidebar",
+  "name": "revivalOldHistorySidebar.uc.js",
+  "description": "Restoration of the old history sidebar",
+  "version": "2025/01/27 Fix startup and color",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/136",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "revivalOldHistorySidebar.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul",
+        "chrome://browser/content/places/historySidebar.xhtml?revamped"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

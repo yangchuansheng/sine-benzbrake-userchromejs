@@ -1,0 +1,18 @@
+{
+  "id": "sidebarattrubesdetector",
+  "name": "sidebarAttrubesDetector.uc.js",
+  "description": "主窗口新增 sidebarCommand 属性",
+  "version": "1.0",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "sidebarAttrubesDetector.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

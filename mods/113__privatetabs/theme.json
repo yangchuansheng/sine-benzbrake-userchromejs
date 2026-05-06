@@ -1,0 +1,22 @@
+{
+  "id": "113__privatetabs",
+  "name": "Private Tabs",
+  "description": "Private Tabs 移植版，用于 Alice0775 的 userChrome.js Loader",
+  "version": "1.2.3",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/113",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "privateTabs.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul",
+        "chrome://browser/content/places/bookmarksSidebar.xhtml",
+        "chrome://browser/content/places/historySidebar.xhtml",
+        "chrome://browser/content/places/places.xhtml"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "This Source Code Form is subject to the terms of the Creative Commons Attribution-NonCommercial-ShareAlike International License, v. 4.0. If a copy of the CC BY-NC-SA 4.0 was not distributed with this file, You can obtain one at http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA."
+}

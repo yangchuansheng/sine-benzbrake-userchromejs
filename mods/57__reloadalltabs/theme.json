@@ -1,0 +1,19 @@
+{
+  "id": "57__reloadalltabs",
+  "name": "ReloadAllTabs.uc.js",
+  "description": "标签页右键菜单添加一个刷新全部页面的菜单",
+  "version": "20240508",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/57",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "ReloadAllTabs.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xul",
+        "chrome://browser/content/browser.xhtml"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "MIT License"
+}

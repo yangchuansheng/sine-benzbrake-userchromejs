@@ -1,0 +1,608 @@
+// ==UserScript==
+// @name            miscMods.uc.js
+// @long-description
+// @description
+/* 没有分类的脚本合集
+
+1. 粘贴并转到增加 Access Key
+2. 中键单击地址栏复制当前地址
+3. 右键地址栏收藏按钮打开书签管理
+4. 右键刷新按钮强制刷新
+5. 右键 xiaoxiaoflood 的扩展管理管理器打开扩展管理页面
+6. 中键下载按钮提示保存 URL
+7. 右键下载按钮打开下载管理
+8. 左键侧边栏按钮打开书签侧边栏
+9. 中键侧边栏按钮切换侧边栏方向
+10.右键侧边栏按钮打开历史侧边栏
+11.双击侧边栏标题切换侧边栏显示位置
+12.中键 SidebarModoki 按钮切换侧边栏方向
+13.CTRL + F 开关查找栏
+
+*/
+// @license         MIT License
+// @compatibility   Firefox 90
+// @version         20260330.4
+// @charset         UTF-8
+// @include         chrome://browser/content/browser.xul
+// @include         chrome://browser/content/browser.xhtml
+// @homepageURL     https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS
+// @note            20260330 修复新侧边栏标题双击切换侧边栏位置失效
+// @note            20260330 增加右键强制刷新按钮反馈动画
+// @note            20260330 修复右键刷新在 Fx136+ 报 BrowserReloadWithFlags is not a function
+// @note            20260330 增加地址栏复制成功动画反馈
+// @note            20260330 修复 Fx136+ 地址栏中键复制当前地址失效
+// @note            20250218 修复 Fx135+ Ctrl + F 失效 
+// @note            20240806 修复 Ctrl + F 右键级太高，新增中键 SidebarModoki 按钮切换侧边栏方向
+// @note            20240710 修复中键地址栏复制地址，修复中键下载按钮提示保存 URL
+// @note            20240614 移除 Styloaix 按钮功能，继续修复 Bug 1880914
+// @note            20240602 Bug 1892965 - Rename SidebarUI and SidebarLauncher
+// @note            20240417 Bug 1880914  Move Browser* helper functions used from global menubar and similar commands to a single object in a separate file, loaded as-needed
+
+// ==/UserScript==
+(function () {
+    const CustomizableUI = globalThis.CustomizableUI || Cu.import("resource:///modules/CustomizableUI.jsm").CustomizableUI;
+    const Services = globalThis.Services || Cu.import("resource://gre/modules/Services.jsm").Services;
+    const SidebarController = globalThis.SidebarController || globalThis.SidebarUI;
+    const isZh = Services.locale.appLocaleAsLangTag.startsWith("zh");
+    const boundSidebarHeaderDocs = new WeakSet();
+    const boundSidebarBrowsers = new WeakSet();
+    const config = {
+        "urlbar paste and go add accesskey": { // 地址栏右键粘贴并前往增加 AccessKey
+            enabled: true, // true 是启用， false 是禁用
+            key: 'S'
+        },
+        "urlbar middle click copy url": true,
+        "urlbar middle click copy feedback": true, // 地址栏复制成功动画反馈
+        "searchbar paste and go add accesskey": { // 搜索框右键粘贴并搜索增加 AccessKey
+            enabled: true, // true 是启用， false 是禁用
+            key: 'S'
+        },
+        "star button box add middle and right click": true, // 书签按钮点击功能
+        "reload button right click to force reload": true, // 右键点击刷新按钮强制刷新
+        "right click panel ui button to open sidebar": true, // 右键点击三道杠按钮打开侧边栏
+        "right click extensions options menu button to open addons management": false, // https://github.com/xiaoxiaoflood/firefox-scripts/blob/master/chrome/extensionOptionsMenu.uc.js
+        "right click styloaix button to open themes management": true, // https://github.com/xiaoxiaoflood/firefox-scripts/blob/master/chrome/styloaix.uc.js
+        "downloads button add middle and right click": true, // 中键点击保存剪贴板链接，右键打开下载管理
+        "modify sidebar button behavior": true, // 左键侧边栏按钮打开书签侧边栏，中键侧边栏按钮切换侧边栏方向，右键侧边栏按钮打开历史侧边栏, 双击侧边栏标题按钮切换侧边栏方向
+        "middle click sidebarmodoki button toggle sidebar direction": true, // 中键 SidebarModoki 按钮切换侧边栏方向
+        "ctrl f to toggle findbar": true, // Ctrl + F 开关查找栏,
+    }
+
+    function MiscUtils () {
+        Services.obs.addObserver(this, 'domwindowopened', false);
+    }
+
+    function ensureMiscFeedbackStyle (document) {
+        if (document.getElementById("miscmods-feedback-style")) {
+            return;
+        }
+        let style = document.createElementNS("http://www.w3.org/1999/xhtml", "style");
+        style.id = "miscmods-feedback-style";
+        style.textContent = `
+#urlbar-container {
+    position: relative;
+}
+#urlbar[miscmods-copy-success="true"] .urlbar-background {
+    animation: miscmods-urlbar-copy-flash .85s ease;
+}
+#miscmods-urlbar-copy-toast {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    z-index: 2147483647;
+    pointer-events: none;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(32, 122, 72, .96);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: .02em;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, .18);
+    opacity: 0;
+    transform: translate(-50%, 8px) scale(.92);
+}
+#miscmods-urlbar-copy-toast[data-active="true"] {
+    animation: miscmods-urlbar-copy-toast .9s cubic-bezier(.22, 1, .36, 1) forwards;
+}
+@keyframes miscmods-urlbar-copy-flash {
+    0% {
+        box-shadow: 0 0 0 rgba(48, 171, 98, 0);
+    }
+    30% {
+        box-shadow: 0 0 0 2px rgba(48, 171, 98, .36), 0 0 20px rgba(48, 171, 98, .24);
+    }
+    100% {
+        box-shadow: 0 0 0 rgba(48, 171, 98, 0);
+    }
+}
+@keyframes miscmods-urlbar-copy-toast {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 8px) scale(.92);
+    }
+    18% {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1);
+    }
+    72% {
+        opacity: 1;
+        transform: translate(-50%, -1px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -10px) scale(.98);
+    }
+}
+#reload-button[miscmods-force-reload-success="true"] {
+    animation: miscmods-force-reload-button .62s ease;
+}
+#reload-button[miscmods-force-reload-success="true"] > .toolbarbutton-icon,
+#reload-button[miscmods-force-reload-success="true"] > .toolbarbutton-badge-stack {
+    animation: miscmods-force-reload-icon .62s ease;
+}
+@keyframes miscmods-force-reload-button {
+    0% {
+        background-color: transparent;
+        box-shadow: 0 0 0 rgba(58, 152, 255, 0);
+    }
+    35% {
+        background-color: color-mix(in srgb, currentColor 16%, transparent);
+        box-shadow: 0 0 0 2px rgba(58, 152, 255, .24), 0 0 18px rgba(58, 152, 255, .18);
+    }
+    100% {
+        background-color: transparent;
+        box-shadow: 0 0 0 rgba(58, 152, 255, 0);
+    }
+}
+@keyframes miscmods-force-reload-icon {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    40% {
+        transform: scale(1.08) rotate(-18deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}`;
+        document.documentElement.appendChild(style);
+    }
+
+    function showUrlbarCopyFeedback (document, window) {
+        if (!config["urlbar middle click copy feedback"]) {
+            return;
+        }
+        ensureMiscFeedbackStyle(document);
+        let urlbar = document.getElementById("urlbar");
+        let container = document.getElementById("urlbar-container");
+        if (!urlbar || !container) {
+            return;
+        }
+        let toast = document.getElementById("miscmods-urlbar-copy-toast");
+        if (!toast) {
+            toast = document.createElementNS("http://www.w3.org/1999/xhtml", "div");
+            toast.id = "miscmods-urlbar-copy-toast";
+            container.appendChild(toast);
+        }
+        toast.textContent = isZh ? "已复制" : "Copied";
+        if (toast._hideTimer) {
+            window.clearTimeout(toast._hideTimer);
+        }
+        toast.removeAttribute("data-active");
+        urlbar.removeAttribute("miscmods-copy-success");
+        void toast.offsetWidth;
+        toast.setAttribute("data-active", "true");
+        urlbar.setAttribute("miscmods-copy-success", "true");
+        toast._hideTimer = window.setTimeout(() => {
+            toast.removeAttribute("data-active");
+            urlbar.removeAttribute("miscmods-copy-success");
+        }, 900);
+    }
+
+    function showForceReloadFeedback (button, window, document) {
+        if (!button) {
+            return;
+        }
+        ensureMiscFeedbackStyle(document);
+        if (button._miscForceReloadTimer) {
+            window.clearTimeout(button._miscForceReloadTimer);
+        }
+        button.removeAttribute("miscmods-force-reload-success");
+        void button.offsetWidth;
+        button.setAttribute("miscmods-force-reload-success", "true");
+        button._miscForceReloadTimer = window.setTimeout(() => {
+            button.removeAttribute("miscmods-force-reload-success");
+        }, 650);
+    }
+
+    function forceReloadBrowser (window) {
+        const flags = Ci.nsIWebNavigation.LOAD_FLAGS_BYPASS_CACHE | Ci.nsIWebNavigation.LOAD_FLAGS_BYPASS_PROXY;
+        if (typeof window.BrowserReloadSkipCache === "function") {
+            window.BrowserReloadSkipCache();
+            return;
+        }
+        const browsingContext = window.gBrowser?.selectedBrowser?.browsingContext;
+        if (typeof browsingContext?.reload === "function") {
+            browsingContext.reload(flags);
+            return;
+        }
+        const webNavigation = window.gBrowser?.selectedBrowser?.webNavigation;
+        if (typeof webNavigation?.reload === "function") {
+            webNavigation.reload(flags);
+        }
+    }
+
+    function toggleSidebarPosition () {
+        Services.prefs.setBoolPref("sidebar.position_start", !Services.prefs.getBoolPref("sidebar.position_start"));
+    }
+
+    function isSidebarHeaderElement (node) {
+        return !!node && node.nodeType === 1 && (
+            node.id === "sidebar-header" ||
+            node.id === "sidebar-panel-header" ||
+            node.localName === "sidebar-panel-header" ||
+            node.classList?.contains("sidebar-panel-header") ||
+            node.classList?.contains("sidebar-panel-heading")
+        );
+    }
+
+    function findSidebarHeaderFromEvent (event) {
+        if (typeof event.composedPath === "function") {
+            for (let node of event.composedPath()) {
+                if (isSidebarHeaderElement(node)) {
+                    return node;
+                }
+            }
+        }
+        let target = event.target;
+        if (target && typeof target.closest === "function") {
+            return target.closest("#sidebar-header, #sidebar-panel-header, sidebar-panel-header, .sidebar-panel-header, .sidebar-panel-heading");
+        }
+        return null;
+    }
+
+    function bindSidebarHeaderDoubleClick (targetDocument) {
+        if (!targetDocument || boundSidebarHeaderDocs.has(targetDocument)) {
+            return;
+        }
+        boundSidebarHeaderDocs.add(targetDocument);
+        targetDocument.addEventListener("dblclick", function (event) {
+            if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) {
+                return;
+            }
+            if (event.target?.closest?.("button, toolbarbutton, moz-button, input, textarea, a")) {
+                return;
+            }
+            if (!findSidebarHeaderFromEvent(event)) {
+                return;
+            }
+            event.preventDefault();
+            event.stopPropagation();
+            toggleSidebarPosition();
+        }, true);
+    }
+
+    function bindSidebarBrowserDoubleClick (document, window) {
+        let sidebar = document.getElementById("sidebar");
+        if (!sidebar || boundSidebarBrowsers.has(sidebar)) {
+            return;
+        }
+        boundSidebarBrowsers.add(sidebar);
+        let bindCurrentSidebarDocument = function () {
+            try {
+                bindSidebarHeaderDoubleClick(sidebar.contentDocument);
+            } catch (ex) { }
+        };
+        sidebar.addEventListener("load", bindCurrentSidebarDocument, true);
+        window.setTimeout(bindCurrentSidebarDocument, 0);
+    }
+
+    MiscUtils.prototype = {
+        observe: function (aSubject, aTopic, aData) {
+            aSubject.addEventListener('load', this, true);
+        },
+        handleEvent: function (aEvent) {
+            if (aEvent.type === "load") {
+                let document = aEvent.originalTarget;
+                if (document.location.href.startsWith('chrome://browser/content/browser.x')) {
+                    this.init(document, document.ownerGlobal);
+                }
+            }
+        },
+        init: function (document, window) {
+            if (config["urlbar paste and go add accesskey"].enabled) {
+                let accesskey = config["urlbar paste and go add accesskey"].accesskey || 'S';
+                let input = CustomizableUI.getWidget('urlbar-input').forWindow(window).node;
+                if (input)
+                    input.addEventListener("contextmenu", function () {
+                        document.getElementById('paste-and-go').setAttribute('accesskey', accesskey);
+                    });
+            }
+            if (config["urlbar middle click copy url"]) {
+                let input = document.getElementById('urlbar');
+                if (input) {
+                    let isUrlbarCopyTarget = function (target) {
+                        if (!(target instanceof Element) || !target.closest('#urlbar')) {
+                            return false;
+                        }
+                        if (target.closest('#location-bar, #page-action-buttons, #star-button-box, #identity-box, #tracking-protection-icon-container, #urlbar-searchmode-switcher, .urlbarView, menupopup')) {
+                            return false;
+                        }
+                        return !!target.closest('#urlbar-input, #urlbar-scheme, .urlbar-input-box, .urlbar-input-container, .urlbar-background, #urlbar');
+                    };
+                    let handleUrlbarMiddleClick = function (e) {
+                        if (e.button !== 1 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || !isUrlbarCopyTarget(e.target)) {
+                            return;
+                        }
+                        e.preventDefault();
+                        e.stopPropagation();
+                        if (e.type === 'mousedown') {
+                            return;
+                        }
+                        let currentURL = window.gBrowser?.selectedBrowser?.currentURI?.spec || window.gBrowser?.currentURI?.spec || window.gURLBar?.untrimmedValue || window.gURLBar?.value;
+                        if (!currentURL) {
+                            return;
+                        }
+                        Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper).copyString(currentURL);
+                        showUrlbarCopyFeedback(document, window);
+                    };
+                    input.addEventListener('mousedown', handleUrlbarMiddleClick, true);
+                    input.addEventListener('auxclick', handleUrlbarMiddleClick, true);
+                    input.addEventListener('click', handleUrlbarMiddleClick, true);
+                }
+            }
+            if (config["searchbar paste and go add accesskey"].enabled) {
+                let accesskey = config["urlbar paste and go add accesskey"].accesskey || 'S';
+                let input = CustomizableUI.getWidget('searchbar').forWindow(window).node;
+                if (input)
+                    input.addEventListener("contextmenu", function () {
+                        document.querySelector('.searchbar-paste-and-search').setAttribute('accesskey', accesskey);
+                    });
+            }
+            if (config["star button box add middle and right click"]) {
+                let star = CustomizableUI.getWidget('star-button-box').forWindow(window).node;
+                if (star) {
+                    let callback = function () {
+                        star.removeEventListener('mouseover', callback);
+                        star.setAttribute('tooltiptext', isZh ? "左键：将此页加入书签(CTRL+D)\n中键：显示/隐藏书签工具栏\n右键：打开书签管理器" : "Left click: show extensions options menu(CTRL+D)\nMiddle click: toggle places toolbar\nRight click: open addons management")
+                        let clickFn = function (e) {
+                            if (e.ctrlKey || e.metaKey || e.shiftKey) {
+                                return;
+                            }
+                            if (e.button === 0) {
+                                return;
+                            } else if (e.button === 1) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                var bar = document.getElementById("PersonalToolbar"); setToolbarVisibility(bar, bar.collapsed);
+                            } else if (e.button === 2) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                PlacesCommandHook.showPlacesOrganizer('AllBookmarks');
+                            }
+                        }
+                        star.addEventListener('click', clickFn, true);
+                    }
+                    star.addEventListener('mouseover', callback);
+                }
+            }
+            if (config["reload button right click to force reload"]) {
+                let reload = CustomizableUI.getWidget('reload-button').forWindow(window).node;
+                if (reload) {
+                    let callback = function () {
+                        reload.removeEventListener('mouseover', callback);
+                        reload.setAttribute('tooltiptext', isZh ? '左键：刷新\n右键：强制刷新' : 'Left click: refresh page\nRight click: force refresh page');
+                        let clickFn = function (event) {
+                            if (event.button == 2) {
+                                const global = event.target.ownerGlobal;
+                                event.preventDefault();
+                                forceReloadBrowser(global);
+                                showForceReloadFeedback(reload, global, document);
+                            }
+                        }
+                        reload.addEventListener('click', clickFn);
+                    };
+                    reload.addEventListener('mouseover', callback);
+                }
+            }
+            if (config["right click panel ui button to open sidebar"]) {
+                var OpenAllTabs = document.getElementById('PanelUI-menu-button');
+                if (!OpenAllTabs) return;
+                OpenAllTabs.addEventListener("click", function (e) {
+                    if (e.button == 2) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        if (document.getElementById("sidebar-button")) {
+                            document.getElementById("sidebar-button").click();
+                        } else {
+                            SidebarController.toggle("viewBookmarksSidebar");
+                        }
+                        Services.prefs.setBoolPref("sidebar.position_start", false);
+                    }
+                }, false);
+
+            }
+            if (config["right click extensions options menu button to open addons management"] && CustomizableUI.getPlacementOfWidget('eom-button', true)) {
+                let eom = CustomizableUI.getWidget('eom-button').forWindow(window).node;
+                let callback = function () {
+                    eom.removeEventListener('mouseover', callback);
+                    eom.setAttribute('tooltiptext', isZh ? '左键：拓展选项菜单\n右键：扩展管理' : 'Left click: show extensions options menu\nRight click: open addons management');
+                    let clickFn = function (event) {
+                        if (event.button == 2 && event.target.localName == 'toolbarbutton') {
+                            event.preventDefault();
+                            AddonMgr('addons://list/extension');
+                        }
+                    }
+                    eom.addEventListener('click', clickFn);
+                };
+                eom.addEventListener('mouseover', callback);
+            }
+            if (config["downloads button add middle and right click"]) {
+                let btn = CustomizableUI.getWidget('downloads-button').forWindow(window).node;
+                if (btn) {
+                    btn.setAttribute('tooltiptext', isZh ? '左键：下载历史\n右键：我的足迹' : 'Left click: show downloads history\nRight click: show my footprints');
+                    let clickFn = function (e) {
+                        if (e.button == 1) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            var input = { value: readFromClipboard() || "" };                  // default the edit field to Bob
+                            var result = Services.prompt.prompt(null, isZh ? "保存 URL" : "Save URL", isZh ? "请输入 URL?" : "Please enter URL?", input, null, {});
+                            if (!result)
+                                return;
+                            if (!(/(chrome|resource|ftp|http|https):\/\//i.test(input.value))) return;
+                            let cookieJarSettings = gBrowser.selectedBrowser.cookieJarSettings;
+                            //saveURL(aURL, aOriginalURL, aFileName, aFilePickerTitleKey, aShouldBypassCache,
+                            //        aSkipPrompt, aReferrer, aCookieJarSettings,
+                            //        aSourceDocument,
+                            //        aIsContentWindowPrivate,
+                            //        aPrincipal)
+                            saveURL(
+                                input.value,
+                                null,
+                                null,
+                                null,
+                                true,
+                                false,
+                                null,
+                                cookieJarSettings,
+                                null,
+                                PrivateBrowsingUtils.isWindowPrivate(window),
+                                Services.scriptSecurityManager.createNullPrincipal({})
+                            );
+                        } else if (e.button == 2 && !e.shiftKey) {
+                            // 右键打开下载历史
+                            e.preventDefault();
+                            e.stopPropagation();
+                            if (typeof ucjs_downloadManager === "undefined")
+                                DownloadsPanel.showDownloadsHistory();
+                            else
+                                ucjs_downloadManager.openDownloadManager(true);
+                        }
+                    }
+                    btn.addEventListener('click', clickFn);
+                }
+            }
+            if (config["modify sidebar button behavior"]) {
+                let btn = CustomizableUI.getWidget('sidebar-button').forWindow(window).node;
+                if (btn) {
+                    btn.setAttribute('tooltiptext', isZh ? '左键：显示书签侧边栏\n中键：切换侧边栏方向\n右键：显示历史侧边栏' : 'Left click: show bookmarks sidebar\nMiddle click: toogle sidebar postion\nRight click: show history sidebar');
+                    let clickFn = function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        switch (e.button) {
+                            case 2:
+                                SidebarController.toggle("viewHistorySidebar");
+                                break;
+                            case 1:
+                                toggleSidebarPosition();
+                                break;
+                            case 0:
+                                SidebarController.toggle("viewBookmarksSidebar")
+                                break;
+                        }
+                    }
+                    btn.addEventListener('click', clickFn);
+                }
+
+                bindSidebarHeaderDoubleClick(document);
+                bindSidebarBrowserDoubleClick(document, window);
+
+                if (window.SidebarModoki) {
+                    let header = document.getElementById("SM_header");
+                    if (!header) {
+                        // 使用 MutationObserver 等待 SM_header
+                        let observer = new MutationObserver(function (mutations) {
+                            mutations.forEach(function (mutation) {
+                                if (mutation.type === "childList" && mutation.addedNodes.length > 0) {
+                                    // mutation 的 ID 是 SM_header
+                                    header = document.getElementById("SM_header");
+                                    if (header) {
+                                        addEvent(header);
+                                        observer.disconnect();
+                                    }
+                                }
+                            });
+                        });
+                    } else {
+                        addEvent(header);
+                    }
+
+                    function addEvent (header) {
+                        header.addEventListener('dblclick', ({ target }) => {
+                            if (target !== header) return;
+                            toggleSidebarPosition();
+                        });
+                    }
+                }
+            }
+            if (config["middle click sidebarmodoki button toggle sidebar direction"]) {
+                let btn = document.getElementById("SM_Button"), count = 0;
+                if (!btn) {
+                    var t = setInterval(() => {
+                        count++;
+                        btn = document.getElementById("SM_Button");
+                        if (count > 10) clearInterval(t);
+                        if (btn) {
+                            bindSMButton(btn);
+                            clearInterval(t);
+                        }
+                    }, 100);
+                }
+                window.addEventListener("aftercustomization", function () {
+                    bindSMButton(document.getElementById("SM_Button"));
+                });
+                function bindSMButton (btn) {
+                    if (!btn) return;
+                    if (btn.getAttribute("misc_bind") == "true") return;
+                    btn.setAttribute("misc_bind", "true");
+                    btn.addEventListener('click', function (e) {
+                        if (e.button == 1) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            toggleSidebarPosition();
+                        }
+                    });
+                }
+            }
+            if (config["ctrl f to toggle findbar"]) {
+                const toggleFindbar = function () {
+                    if (gFindBar) {
+                        gFindBar.hidden ? gFindBar.onFindCommand() : gFindBar.close();
+                    } else {
+                        gLazyFindCommand("onFindCommand");
+                    }
+                };
+
+                document.getElementById("mainCommandSet").addEventListener("command", event => {
+                    switch (event.target.id) {
+                        case "cmd_find":
+                            event.stopPropagation();
+                            event.preventDefault();
+                            toggleFindbar();
+                    }
+                }, true);
+            }
+        }
+    }
+
+    function AddonMgr () {
+        let args = [...arguments], b = "openAddonsMgr";
+        eval(`${parseInt(Services.appinfo.version) < 126
+            ? "Browser" + b[0].toUpperCase() + b.slice(1)
+            : "BrowserAddonUI." + b}(...args)`);
+    }
+
+    const miscUtils = new MiscUtils();
+
+    if (gBrowserInit.delayedStartupFinished) miscUtils.init(document, window); else {
+        let delayedListener = (subject, topic) => {
+            if (topic == "browser-delayed-startup-finished" && subject == window) {
+                Services.obs.removeObserver(delayedListener, topic);
+                miscUtils.init(subject.document, subject);
+            }
+        };
+        Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
+    }
+})();

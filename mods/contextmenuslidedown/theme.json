@@ -1,0 +1,17 @@
+{
+  "id": "contextmenuslidedown",
+  "name": "contextMenuSlideDown.uc.js",
+  "description": "Animate Context Menus",
+  "version": "1.0.0",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "contextMenuSlideDown.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        ".*"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

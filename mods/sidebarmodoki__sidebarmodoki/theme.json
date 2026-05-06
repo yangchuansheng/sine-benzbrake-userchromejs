@@ -1,0 +1,19 @@
+{
+  "id": "sidebarmodoki__sidebarmodoki",
+  "name": "SidebarModoki",
+  "description": "TST",
+  "version": "2024/05/05 Bug 1892965 - Rename Sidebar launcher and SidebarUI",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/SidebarModoki",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "SidebarModoki.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul",
+        ""
+      ]
+    }
+  },
+  "supportsUnload": false
+}

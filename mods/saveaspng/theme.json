@@ -1,0 +1,17 @@
+{
+  "id": "saveaspng",
+  "name": "SaveAsPNG.uc.js",
+  "description": "保存图片为 PNG 格式",
+  "version": "2024.04.24",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "SaveAsPNG.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

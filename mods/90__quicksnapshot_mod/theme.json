@@ -1,0 +1,18 @@
+{
+  "id": "90__quicksnapshot_mod",
+  "name": "可移动多功能截图按钮",
+  "description": "修改自 QuickSnapshot.uc.js，可热插拔",
+  "version": "1.0.0",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/90",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "QuickSnapshot_Mod.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

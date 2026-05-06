@@ -1,0 +1,18 @@
+{
+  "id": "openwithhelper__openwithhelper",
+  "name": "OpenWithHelper.uc.js",
+  "description": "使用第三方应用打开网页",
+  "version": "1.0.7",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/OpenWithHelper",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "OpenWithHelper.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

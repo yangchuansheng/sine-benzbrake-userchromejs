@@ -1,0 +1,19 @@
+{
+  "id": "autocopyselectiontext__autocopyselectiontext",
+  "name": "AutoCopySelectionText.uc.js",
+  "description": "自动复制选中文本（ScrLk 亮起时不复制）",
+  "version": "2023.05.14",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/AutoCopySelectionText",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "AutoCopySelectionText.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "MIT License"
+}

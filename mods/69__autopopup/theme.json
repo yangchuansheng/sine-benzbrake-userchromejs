@@ -1,0 +1,17 @@
+{
+  "id": "69__autopopup",
+  "name": "autoPopup++.uc",
+  "description": "可定制化的自动弹出/关闭菜单/面板",
+  "version": "2023.10.06",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/69",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "autoPopup++.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

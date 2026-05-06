@@ -1,0 +1,18 @@
+{
+  "id": "68__addbookmarkhere",
+  "name": "添加书签到此处",
+  "description": "添加 \"添加书签到此处\" 到书签栏右键菜单",
+  "version": "0.0.4",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/68",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "AddBookmarkHere.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/places/places.xhtml"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

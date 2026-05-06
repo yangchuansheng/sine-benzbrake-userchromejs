@@ -1,0 +1,10 @@
+{
+  "id": "autocopyselectiontext__autocopyselectiontext.loader",
+  "name": "AutoCopySelectionTextLegacyAdapter.uc.js",
+  "description": "为 alice0775 原版 userChrome.js 适配 AutoCopySelectionText.uc.mjs This file is a helper/adapter and is not loaded by default.",
+  "version": "2026.04.07",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/AutoCopySelectionText",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {},
+  "supportsUnload": false
+}

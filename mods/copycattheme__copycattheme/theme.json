@@ -1,0 +1,19 @@
+{
+  "id": "copycattheme__copycattheme",
+  "name": "CopyCatTheme.uc.js",
+  "description": "CopyCat 主题专用加载脚本",
+  "version": "0.1.6",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/CopyCatTheme",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "CopyCatTheme.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://userchrome/content/utils/ThemeOptions.html"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "MIT License"
+}

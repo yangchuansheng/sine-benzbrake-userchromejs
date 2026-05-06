@@ -1,0 +1,18 @@
+{
+  "id": "extensionsoptionsmenu__extension-options-menu",
+  "name": "Extension Options Menu.uc.js",
+  "description": "拡張を操作するメニューボタンを追加",
+  "version": "3.1.9 Fix bug Bug 1880914",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS/ExtensionsOptionsMenu",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "Extension Options Menu.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false
+}

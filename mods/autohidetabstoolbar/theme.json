@@ -1,0 +1,19 @@
+{
+  "id": "autohidetabstoolbar",
+  "name": "autoHideTabsToolbar",
+  "description": "只有一个标签时隐藏标签栏目",
+  "version": "0.0.1",
+  "homepage": "https://github.com/benzBrake/FirefoxCustomize/tree/master/userChromeJS",
+  "updatedAt": "2026-05-06T00:00:00Z",
+  "scripts": {
+    "AutoHideTabsToolbar.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "MIT License"
+}
