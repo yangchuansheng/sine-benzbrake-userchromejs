@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           App Menu Mods
-// @version        1.4.8-sine.1
+// @version        1.4.8-sine.2
 // @author         aminomancer
 // @homepageURL    https://github.com/aminomancer/uc.css.js
 // @description    Makes some minor modifications to the app menu (the popup opened by clicking the hamburger button on the far right of the navbar). It adds a restart button to the app menu, adds a restart item to the macOS Tools menu, and it adds a separator under the "Manage Account" button in the profile/account panel. I'll continue adding more mods to this script as I think of them.
@@ -15,8 +15,12 @@
     constructor() {
       PanelUI._initialized || PanelUI.init(shouldSuppressPopupNotifications);
       PanelUI.mainView.addEventListener("ViewShowing", this, { once: true });
-      this.fixSyncSubviewButtonAlignment();
-      this.addToolsMenuRestartItem();
+      this.initToolsMenuRestartItem();
+      try {
+        this.fixSyncSubviewButtonAlignment();
+      } catch (err) {
+        console.warn("[AppMenuMods] Failed to patch sync subview:", err);
+      }
     }
     static create(aDoc, tag, props, isHTML = false) {
       let el = isHTML ? aDoc.createElement(tag) : aDoc.createXULElement(tag);
@@ -42,8 +46,16 @@
       return PanelMultiView.getViewNode(document, "PanelUI-fxa");
     }
     async handleEvent(_e) {
-      let strings = await this.generateStrings();
-      await this.addRestartButton(strings);
+      await this.addRestartButton();
+    }
+    async getRestartLabel() {
+      try {
+        let strings = await this.generateStrings();
+        return await strings.formatValue("restart-button-label");
+      } catch (err) {
+        console.warn("[AppMenuMods] Failed to load restart label:", err);
+        return "Restart";
+      }
     }
     shouldInvalidateCaches(event) {
       return (
@@ -86,12 +98,12 @@
         event.preventDefault();
       });
     }
-    async addRestartButton(strings) {
+    async addRestartButton() {
       if (document.getElementById("appMenu-restart-button2")) return;
       let restartButton = AppMenuMods.create(document, "toolbarbutton", {
         id: "appMenu-restart-button2",
         class: "subviewbutton",
-        label: await strings.formatValue(["restart-button-label"]),
+        label: await this.getRestartLabel(),
       });
       this.bindRestartCommand(restartButton, { hidePanel: true });
       restartButton.addEventListener("click", event => {
@@ -109,25 +121,58 @@
           .appendChild(restartButton);
       }
     }
-    async addToolsMenuRestartItem() {
-      if (AppConstants.platform != "macosx") return;
-      if (document.getElementById("appMenuMods-tools-restart")) return;
-
-      let toolsPopup = document.getElementById("menu_ToolsPopup");
-      if (!toolsPopup) return;
-
-      let strings = await this.generateStrings();
-      let restartItem = AppMenuMods.create(document, "menuitem", {
-        id: "appMenuMods-tools-restart",
-        label: await strings.formatValue(["restart-button-label"]),
-        accesskey: "R",
-      });
-      this.bindRestartCommand(restartItem);
-
-      let anchor = toolsPopup.querySelector(
-        "#devToolsSeparator, #browserToolsMenu, #menu_pageInfo"
+    findToolsPopup() {
+      return (
+        document.getElementById("menu_ToolsPopup") ||
+        document.querySelector("#tools-menu > menupopup")
       );
+    }
+    findToolsMenuAnchor(toolsPopup) {
+      return toolsPopup.querySelector(
+        "#devToolsSeparator, #browserToolsMenu, #menu_pageInfo, #menu_preferences"
+      );
+    }
+    initToolsMenuRestartItem() {
+      if (AppConstants.platform != "macosx") return;
+
+      let attempts = 0;
+      let tryAdd = async () => {
+        if (await this.addToolsMenuRestartItem()) return;
+        if (++attempts < 80) {
+          setTimeout(tryAdd, 250);
+        }
+      };
+      tryAdd();
+
+      document.addEventListener(
+        "popupshowing",
+        event => {
+          if (event.target == this.findToolsPopup()) {
+            this.addToolsMenuRestartItem();
+          }
+        },
+        true
+      );
+    }
+    async addToolsMenuRestartItem() {
+      if (AppConstants.platform != "macosx") return true;
+
+      let toolsPopup = this.findToolsPopup();
+      if (!toolsPopup) return false;
+
+      let restartItem = document.getElementById("appMenuMods-tools-restart");
+      if (!restartItem) {
+        restartItem = AppMenuMods.create(document, "menuitem", {
+          id: "appMenuMods-tools-restart",
+          label: await this.getRestartLabel(),
+          accesskey: "R",
+        });
+        this.bindRestartCommand(restartItem);
+      }
+
+      let anchor = this.findToolsMenuAnchor(toolsPopup);
       toolsPopup.insertBefore(restartItem, anchor);
+      return true;
     }
     fixSyncSubviewButtonAlignment() {
       eval(
