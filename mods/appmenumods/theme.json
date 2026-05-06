@@ -1,0 +1,19 @@
+{
+  "id": "appmenumods",
+  "name": "App Menu Mods",
+  "description": "Makes minor modifications to the Firefox app menu, including adding a restart button.",
+  "version": "1.4.8",
+  "homepage": "https://github.com/aminomancer/uc.css.js/blob/master/JS/appMenuMods.uc.js",
+  "updatedAt": "2025-08-10T02:00:06Z",
+  "scripts": {
+    "appMenuMods.uc.js": {
+      "loadOrder": 10,
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "supportsUnload": false,
+  "license": "CC BY-NC-SA 4.0"
+}

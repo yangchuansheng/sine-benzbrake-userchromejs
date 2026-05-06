@@ -78,6 +78,7 @@ Use a path from the table below.
 | `yangchuansheng/sine-benzbrake-userchromejs/tree/main/mods/95__bookmarksmenu_scrollbar` | `95/bookmarksmenu_scrollbar.uc.js` | yes | not specified |
 | `yangchuansheng/sine-benzbrake-userchromejs/tree/main/mods/96__privatetab` | `96/privateTab.uc.js` | yes | not specified |
 | `yangchuansheng/sine-benzbrake-userchromejs/tree/main/mods/addonspage_fx72` | `AddonsPage_fx72.uc.js` | yes | not specified |
+| `yangchuansheng/sine-benzbrake-userchromejs/tree/main/mods/appmenumods` | `aminomancer/uc.css.js/JS/appMenuMods.uc.js` | yes | CC BY-NC-SA 4.0 |
 | `yangchuansheng/sine-benzbrake-userchromejs/tree/main/mods/autocompletedeletebutton` | `AutoCompleteDeleteButton.uc.js` | yes | MIT License |
 | `yangchuansheng/sine-benzbrake-userchromejs/tree/main/mods/autocopyselectiontext__autocopyselectiontext.loader` | `AutoCopySelectionText/AutoCopySelectionText.loader.uc.js` | no, helper only | not specified |
 | `yangchuansheng/sine-benzbrake-userchromejs/tree/main/mods/autocopyselectiontext__autocopyselectiontext` | `AutoCopySelectionText/AutoCopySelectionText.uc.js` | yes | MIT License |

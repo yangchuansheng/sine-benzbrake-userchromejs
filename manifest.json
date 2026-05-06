@@ -1576,5 +1576,17 @@
     ],
     "license": "",
     "assets": []
+  },
+  {
+    "id": "appmenumods",
+    "sourcePath": "aminomancer/uc.css.js/JS/appMenuMods.uc.js",
+    "name": "App Menu Mods",
+    "kind": "script",
+    "include": [
+      "chrome://browser/content/browser.xhtml",
+      "chrome://browser/content/browser.xul"
+    ],
+    "license": "CC BY-NC-SA 4.0",
+    "assets": []
   }
 ]
