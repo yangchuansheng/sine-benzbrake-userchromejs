@@ -1,8 +1,8 @@
 {
   "id": "downloadplus_fx136",
   "name": "DownloadPlus Fx136",
-  "description": "Enhances Firefox/Zen downloads with external download manager integration, Aria2 RPC support, rename and save options. Sine patch waits for browser delayed startup before registering the toolbar button, adds Zen-compatible CustomizableUI imports, isolates toolbar menu setup failures, and explicitly syncs DownloadPlus into the navigation bar customization state on Zen.",
-  "version": "1.0.5-sine.5",
+  "description": "Enhances Firefox/Zen downloads with external download manager integration, Aria2 RPC support, rename and save options. Sine patch waits for browser delayed startup before registering the toolbar button, adds Zen-compatible CustomizableUI imports, isolates toolbar menu setup failures, syncs DownloadPlus into the navigation bar customization state, and directly inserts a fallback toolbar button when Zen skips widget instantiation.",
+  "version": "1.0.5-sine.6",
   "homepage": "https://github.com/benzBrake/Firefox-downloadPlus.uc.js/blob/main/downloadPlus_Fx136.uc.js",
   "updatedAt": "2026-05-06T10:22:30Z",
   "scripts": {

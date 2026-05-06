@@ -51,7 +51,7 @@ userChromeJS.downloadPlus.showAllDrives 下载对话框显示所有驱动器
 // @include         chrome://browser/content/downloads/contentAreaDownloadsView.xhtml
 // @include         chrome://browser/content/downloads/contentAreaDownloadsView.xhtml?SM
 // @include         about:downloads
-// @version         1.0.5-sine.5
+// @version         1.0.5-sine.6
 // @compatibility   Firefox 139
 // @icon            data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABd0lEQVQ4T5WTv0/CQBzFXy22Axh+NHXqYJjAYggd2JTYNrK5OTg5GTf/Dv0jHEjUzdnEUHbD1KQaEwYTnAwlhiiIxub0jvCjFCjeeN/3Pn33eschZFWrVZJOpxGPxyFJEjctD2xMCqjZMIzRluu6kGXZ5wkAqIk6kskkNE3zfZAC6JqE+ADUXCqVwPM8E3JcMCAhBO12ewQZKai5UCgglUotbGUIGCZhgOmzhhXreR4sy0K5XB5kpABd18N8vnmtVoNpmmNAPp//F8C27TGgXq+z5judzlKQSCQCVVVZkb6aHxyHCKKIt/MDH+jn2cF334N7coGsVmQzNZdj3sB/sg6zRFeaTETWFHitBj5egNezR2QymfCb2DJBEtkV8OuDEA2bYOOqD1EUZ97awGav1yPvR1HIO38Jvjh8OgTN03tsasXlALdGjOzud7EaA+6uo9iqPEFRlLlvJjCggL3jLtwbIHE5P/qw5Zkl0uF2xYYgCAtfK9X9AmZ+hRG+dHY+AAAAAElFTkSuQmCC
 // @homepageURL     https://github.com/benzBrake/FirefoxCustomize
@@ -669,17 +669,90 @@ userChromeJS.downloadPlus.showAllDrives 下载对话框显示所有驱动器
             try {
                 const placement = customizableUI.getPlacementOfWidget?.('DownloadPlus-Btn', true);
                 if (placement) {
-                    return true;
+                    return this.ensureWindowToolbarButtonVisible(document) || true;
                 }
                 customizableUI.addWidgetToArea?.('DownloadPlus-Btn', customizableUI.AREA_NAVBAR);
                 const updatedPlacement = customizableUI.getPlacementOfWidget?.('DownloadPlus-Btn', true);
                 if (updatedPlacement) {
-                    return true;
+                    return this.ensureWindowToolbarButtonVisible(document) || true;
                 }
             } catch (ex) {
                 console.warn("[DownloadPlus] Failed to place toolbar button via CustomizableUI:", ex);
             }
-            return this.ensureToolbarButtonInCustomizationState(customizableUI.AREA_NAVBAR);
+            const stateSynced = this.ensureToolbarButtonInCustomizationState(customizableUI.AREA_NAVBAR);
+            const windowVisible = this.ensureWindowToolbarButtonVisible(document);
+            return stateSynced || windowVisible;
+        },
+        getToolbarButtonContainer (doc = document) {
+            return doc?.getElementById("nav-bar-customization-target")
+                || doc?.querySelector("#nav-bar-customization-target")
+                || doc?.querySelector("#nav-bar .customization-target")
+                || doc?.getElementById("nav-bar");
+        },
+        getToolbarButtonAnchor (doc = document) {
+            const anchorIds = [
+                "zen-colorscheme-toggle",
+                "reopen-closed-tabs-button",
+                "unified-extensions-button",
+                "downloads-button",
+                "PanelUI-button",
+                "nav-bar-overflow-button",
+            ];
+            for (const id of anchorIds) {
+                const node = doc?.getElementById(id);
+                if (node) {
+                    return node;
+                }
+            }
+            return null;
+        },
+        createWindowToolbarButton (doc = document) {
+            const button = createEl(doc, "toolbarbutton", {
+                id: "DownloadPlus-Btn",
+                label: LANG.format("download plus btn"),
+                tooltiptext: LANG.format("download enhance click to switch default download manager"),
+                type: "menu",
+                removable: true,
+                class: "toolbarbutton-1 chromeclass-toolbar-additional FlashGot-icon",
+            });
+            let popup = button.querySelector("#DownloadPlus-Btn-Popup");
+            if (!popup) {
+                popup = this.populateMenu(doc, {
+                    id: "DownloadPlus-Btn-Popup",
+                });
+                if (popup) {
+                    button.appendChild(popup);
+                }
+            }
+            button.addEventListener("mouseover", this, false);
+            return button;
+        },
+        ensureWindowToolbarButtonVisible (doc = document) {
+            if (!doc) {
+                return false;
+            }
+            const documentURI = doc.documentURI?.replace(/\?.*$/, "");
+            if (documentURI !== "chrome://browser/content/browser.xhtml") {
+                return false;
+            }
+            let button = doc.getElementById("DownloadPlus-Btn");
+            if (button) {
+                button.hidden = false;
+                return true;
+            }
+            const container = this.getToolbarButtonContainer(doc);
+            if (!container) {
+                return false;
+            }
+            button = this.createWindowToolbarButton(doc);
+            const anchor = this.getToolbarButtonAnchor(doc);
+            const parent = anchor?.parentNode === container ? container : container;
+            if (anchor?.parentNode === parent) {
+                parent.insertBefore(button, anchor.nextSibling);
+            } else {
+                parent.appendChild(button);
+            }
+            return true;
         },
         ensureToolbarButtonInCustomizationState (targetArea = 'nav-bar') {
             const prefName = "browser.uiCustomization.state";
